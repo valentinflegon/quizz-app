@@ -1,0 +1,31 @@
+{
+  "Users": [
+    {
+      "_id": 516542300002222,
+      "username": "eriubfe",
+      "password": "zehbfen",
+      "email": "zejbferle"
+    }
+  ],
+  "Scores": [
+    {
+      "user": "_id",
+      "categorie": [
+        {
+          "popCity": [
+            {
+              "date": "la date",
+              "result": 150
+            }
+          ],
+          "popCountry": [
+            {
+              "date": "la date",
+              "result": 150
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
