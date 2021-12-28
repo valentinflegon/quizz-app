@@ -3,18 +3,25 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const db = require('./db/connect')
+const userRouter = require('./routes/user-router')
 
 const app = express()
-const apiPort = 3000
+const PORT = 3001
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use(db)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Welcome to quizz application!')
 })
 
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+
+app.use('/api', userRouter)
+
+app.listen(PORT, (err) => {
+    if (err) console.error('❌ Unable to connect the server: ', err);
+    console.log(`🌍 Server listening on port ${PORT} environment`);
+});

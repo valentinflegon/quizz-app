@@ -1,14 +1,26 @@
 {
-  "name": "server",
+  "name": "quizz-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Créer une application de quizz géographique",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirsan98/quizz-app.git"
+  },
+  "keywords": [
+    "les boss"
+  ],
+  "author": "KG_LD_VF",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirsan98/quizz-app/issues"
+  },
+  "homepage": "https://github.com/Kirsan98/quizz-app#readme",
   "dependencies": {
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",

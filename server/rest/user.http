@@ -1,0 +1,26 @@
+### get all users API URL
+GET http://localhost:3001/api/users/
+
+### get user by id API URL
+GET http://localhost:3001/api/user/61cae7cbceef2d430a317399
+
+### add user API URL
+POST http://localhost:3001/api/user/
+content-type: application/json
+
+{
+	"username": "Test",
+	"password": "testpassword",
+    "email": "test@hotmail.com"
+}
+
+### update user API URL
+PUT http://localhost:3001/api/user/61cae7cbceef2d430a317399
+content-type: application/json
+
+{
+	"username": "TestUpdate"
+}
+
+### remove a user
+DELETE http://localhost:3001/api/user/61cae7cbceef2d430a317399

@@ -25,6 +25,6 @@ mongoose.connect(url,connectionParams)
 //   client.close();
 // });
 
-const db = mongoose.connect
+const db = mongoose.connection
 
 module.exports = db
