@@ -20,11 +20,11 @@ class NavBar extends Component {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-            <Navbar.Brand href="#home">GeoQuizz</Navbar.Brand>
+            <Navbar.Brand href="/">GeoQuizz</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#features">ScoreBoard</Nav.Link>
+                <Nav.Link href="/scoreboard">ScoreBoard</Nav.Link>
               </Nav>
               <Nav>
               <NavDropdown title="User" id="collasible-nav-dropdown">
