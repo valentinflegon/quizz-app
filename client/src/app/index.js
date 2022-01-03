@@ -5,7 +5,7 @@ import { NavBar } from '../components'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function App() {
+function Index() {
     return (
         <Router>
             <NavBar/>
@@ -13,4 +13,4 @@ function App() {
     )
 }
 
-export default App
+export default Index;
