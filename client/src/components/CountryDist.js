@@ -7,7 +7,11 @@ const CountryDist = () => {
   let location = useLocation();
   console.log(location.state, 'les props avec uselocation');
 
-  axios.get('https://fr.distance24.org/route.json?stops='+location.state.from[0]+'|'+location.state.from[1])
+  // axios.get('https://fr.distance24.org/route.json?stops='+location.state.from[0]+'|'+location.state.from[1])
+  // .then((resp) => {
+  //   console.log(resp, 'resultat distance');
+  // });
+  fetch('http://fr.distance24.org/route.json?stops='+location.state.from[0]+'|'+location.state.from[1])
   .then((resp) => {
     console.log(resp, 'resultat distance');
   });
