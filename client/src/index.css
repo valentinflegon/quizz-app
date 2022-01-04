@@ -1,0 +1,7 @@
+@import url('https://fonts.google.com/specimen/Montserrat');
+
+:root{
+    --font-family: 'Montserrat', sans-serif;
+
+    --color-text: #000000;
+}
