@@ -1,0 +1,15 @@
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  .navbar-txt{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    >div{
+      margin: 0 2%;
+    }
+    .profil-btn{
+      width: 50%;
+    }
+  }
+}

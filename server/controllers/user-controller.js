@@ -1,13 +1,35 @@
-const User = require('../models/user-model')
+const User = require('../models/user-model');
 
-createUser = (req, res) => {
-  const body = req.body;
+createUser = async (req, res) => {
+  const { body } = req;
+  const { username, email } = body;
+  try {
+    const usernameExist = await User.findOne({ username: username });
+    const emailExist = await User.findOne({ email: email });
+    if (usernameExist) {
+      return res.status(200).json({
+        success: false,
+        message: { username: "Username already exist" }
+      });
+    }
+    if (emailExist) {
+      return res.status(200).json({
+        success: false,
+        message: { email: "Email already exist" }
+      });
+    }
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "failed to load data to compare with"
+    });
+  }
 
   if (!body) {
     return res.status(400).json({
       success: false,
       error: 'You must provide a user',
-    });
+    })
   }
 
   const user = new User(body);
@@ -16,12 +38,11 @@ createUser = (req, res) => {
     return res.status(400).json({ success: false, error: err });
   }
 
-  user
-    .save()
+  user.save()
     .then(() => {
       return res.status(201).json({
         success: true,
-        id: user,
+        data: user,
         message: 'User created!',
       });
     })
@@ -30,7 +51,7 @@ createUser = (req, res) => {
         error,
         message: 'User not created!',
       });
-    })
+    });
 }
 
 updateUser = async (req, res) => {
