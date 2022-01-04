@@ -10,7 +10,7 @@ const Play = () => {
     return (
       <div className='play-page'>
         <h1>Bienvenue {state.username} !</h1>
-        <GamemodChoice />
+        <GamemodChoice state={state}/>
       </div>
     );
   }
