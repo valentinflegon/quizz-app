@@ -1,4 +1,5 @@
 const User = require('../models/user-model');
+const bcrypt = require('bcryptjs');
 
 createUser = async (req, res) => {
   const { body } = req;
@@ -99,8 +100,7 @@ deleteUser = async (req, res) => {
     }
 
     if (!user) {
-      return res
-        .status(404)
+      return res.status(404)
         .json({ success: false, error: `User not found` })
     }
 
@@ -137,10 +137,37 @@ getUsers = async (req, res) => {
   }
 }
 
+//Log in
+logIn = async (req, res) => {
+  const { username, password } = req.body;
+  // console.log(username, password);
+  const user = await User.findOne({ username: username });
+  if (user == undefined)
+    return res.status(200).json({
+      success: false,
+      message: "username inconnu"
+    });
+  else {
+    bcrypt.compare(password, user.password).then(
+      (response) => {
+        if (!response)
+          return res.status(200).json({
+            success: response,
+            message: "Username and password does not match !"
+          });
+        else {
+          return res.status(200).json({success: true});
+        }
+      }
+    );
+  }
+};
+
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
   getUsers,
   getUserById,
+  logIn,
 }

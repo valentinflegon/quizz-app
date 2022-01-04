@@ -22,5 +22,14 @@ content-type: application/json
 	"username": "TestUpdate"
 }
 
+### login user
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+	"username": "test",
+	"password": "00000"
+}
+
 ### remove a user
 DELETE http://localhost:3001/api/user/61cae7cbceef2d430a317399
