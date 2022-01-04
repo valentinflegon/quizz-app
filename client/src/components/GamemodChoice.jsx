@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const GamemodChoice = () => {
+
+  let { state } = useLocation();
+  console.log(state, "from game mod choice");
 
   const data = require('./paysGood.json');
   function getRandomInt(max) {
@@ -24,6 +27,7 @@ const GamemodChoice = () => {
   }
   return (
     <div className='gamemodchoice container'>
+      {state && <h1>wallah le game mod choice a bien capté que c'etait {state.username} le boss !</h1>}
       <div className='row mt-3'>
         <h5>Jouer au mode Distance</h5>
         <div className='col'>distance entre pays</div>
