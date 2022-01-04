@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar';
 const Play = () => {
   return (
     <div>
-      <Navbar />
       <GamemodChoice />
     </div>
   );

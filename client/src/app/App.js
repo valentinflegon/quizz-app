@@ -8,10 +8,12 @@ import {Home, Login, Signin, Play, NotFound} from '../pages';
 // import Signin from "../pages/auth/Signin";
 // import Play from '../pages/Play';
 import CountryDist from '../components/CountryDist';
+import Navbar from '../components/Navbar';
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/login" element={<Login/>} />

@@ -5,7 +5,6 @@ import SignIn from '../../components/Signin';
 const Signin = () => {
   return (
     <div className='sign-in-page'>
-      <Navbar />
       <SignIn />
     </div>
   );

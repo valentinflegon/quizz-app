@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Mainmenu from '../components/MainMenu';
 import { useLocation } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <Navbar />
       <Mainmenu />
     </div>
   );
