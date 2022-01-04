@@ -1,14 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Home, Login, Signin, Play, NotFound} from '../pages';
-
-// import Home from "../pages/Home";
-// import NotFound from "../pages/NotFound";
-// import Login from "../pages/auth/Login";
-// import Signin from "../pages/auth/Signin";
-// import Play from '../pages/Play';
-import CountryDist from '../components/CountryDist';
-import Navbar from '../components/Navbar';
+import {Navbar, Footer, CountryDist} from '../components';
 
 function App() {
   return (
@@ -22,8 +15,8 @@ function App() {
         <Route exact path="/countryDistances" element={<CountryDist/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      <Footer />
     </BrowserRouter>
-
   )
 }
 
