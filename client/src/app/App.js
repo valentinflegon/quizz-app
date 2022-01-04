@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
-import Login from "../pages/auth/Login";
-import Signin from "../pages/auth/Signin";
-import Play from '../pages/Play';
+import {Home, Login, Signin, Play, NotFound} from '../pages';
+
+// import Home from "../pages/Home";
+// import NotFound from "../pages/NotFound";
+// import Login from "../pages/auth/Login";
+// import Signin from "../pages/auth/Signin";
+// import Play from '../pages/Play';
 import CountryDist from '../components/CountryDist';
 
 function App() {
