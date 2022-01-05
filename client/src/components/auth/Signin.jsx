@@ -1,29 +1,49 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import axios from 'axios';
+import { useNavigate, NavLink } from 'react-router-dom';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <NavLink exact to="/">
+        Your Website
+      </NavLink>
+      {' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-const validationSchema = yup.object().shape({
-  username: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(5).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]).required()
-});
+const theme = createTheme();
 
 const Signin = () => {
-  let location = useLocation();
-  console.log(location.state, 'les props avec uselocation');
-  const [success, setSuccess] = useState(null);
-  // const [data, setData] = useState();
 
-  //TODO validation matching password et message d'erreur quand pas valid
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(validationSchema) });
+  let navigate = useNavigate();
+  const [success, setSuccess] = useState(null);
   let message = {};
-  const onSubmit = async (data) => {
-    axios.post('http://localhost:3001/api/create-user', data)
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    let tmp = {
+      username: data.get('username'),
+      email: data.get('email'),
+      password: data.get('password'),
+    };
+    axios.post('http://localhost:3002/api/create-user', tmp)
       .then((response) => {
         console.log(response);
         message = response.data.message;
@@ -33,49 +53,108 @@ const Signin = () => {
           setSuccess(message);
           console.log(success, "success after setsuccess");
         }
-        else if (message.email) {
+        else if (message.username) {
           setSuccess(message);
         }
         else {
+          console.log("on change de page");
           setSuccess(null);
+          navigate("/play", { replace: true, state: { isLogged:true, username: tmp.username } }); 
         }
       })
       .catch((error) => {
         console.log(error.message);
       });
-  }
+    // eslint-disable-next-line no-console
+    console.log({
+      username: data.get('username'),
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
 
   return (
-    <div className='signin-comp center'>
-      <div className='inner-signin form-card'>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='username center'>
-            <label htmlFor='username'>Nom d'utilisateur</label>
-            <input className='form-control' type='texte' {...register('username', { required: true })}></input>
-            {errors.username && <span className='error'>errors.username?.message</span>}
-            <span className='error'>{success && success.username ? success.username : ""}</span>
-          </div>
-          <div className='email center'>
-            <label htmlFor='email'>Email</label>
-            <input className='form-control' type="texte" {...register('email', { required: true })}></input>
-            <span className='error'>{errors.email?.message}</span>
-            <span className='error'>{success && success.email ? success.email : ""}</span>
-          </div>
-          <div className='password center'>
-            <label htmlFor='password'>Mot de passe</label>
-            <input className='form-control' type="password" {...register('password', { required: true })}></input>
-            <span className='error'>{errors.password?.message}</span>
-          </div>
-          <div className='confirmPassword center'>
-            <label htmlFor='confirmPassword'>Confirmer Mot de passe</label>
-            <input className='form-control' type="password" {...register('confirmPassword', { required: true })}></input>
-            <span className='error'>{errors.confirmPassword && "Passwords should match"}</span>
-          </div>
-          <button className='btn btn-dark'>S'inscrire</button>
-        </form>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="confirm-password"
+                  label="Confirm password"
+                  type="password"
+                  id="confirm-password"
+                  autoComplete="confirm-password"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="center">
+                <NavLink exact to="/login">
+                  Already have an account? Sign in
+                </NavLink>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
   );
-};
+}
 
 export default Signin;
