@@ -1,11 +1,11 @@
 ### get all users API URL
-GET http://localhost:3001/api/users/
+GET http://localhost:3002/api/users/
 
 ### get user by id API URL
-GET http://localhost:3001/api/user/61cae7cbceef2d430a317399
+GET http://localhost:3002/api/user/61cae7cbceef2d430a317399
 
 ### add user API URL
-POST http://localhost:3001/api/user/
+POST http://localhost:3002/api/user/
 content-type: application/json
 
 {
@@ -15,7 +15,7 @@ content-type: application/json
 }
 
 ### update user API URL
-PUT http://localhost:3001/api/user/61cae7cbceef2d430a317399
+PUT http://localhost:3002/api/user/61cae7cbceef2d430a317399
 content-type: application/json
 
 {
@@ -23,7 +23,7 @@ content-type: application/json
 }
 
 ### login user
-POST http://localhost:3001/api/login
+POST http://localhost:3002/api/login
 Content-Type: application/json
 
 {
@@ -32,4 +32,4 @@ Content-Type: application/json
 }
 
 ### remove a user
-DELETE http://localhost:3001/api/user/61cae7cbceef2d430a317399
+DELETE http://localhost:3002/api/user/61cae7cbceef2d430a317399

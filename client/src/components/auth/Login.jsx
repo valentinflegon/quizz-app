@@ -1,53 +1,128 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import axios from 'axios';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
-const validationSchema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required()
-});
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <NavLink exact to="/">
+        Your Website
+      </NavLink>  
+      {' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
+
 const Login = () => {
+  
   let navigate = useNavigate();
-  const [connexionData, setConnexionData] = useState(null);
 
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(validationSchema) });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    let tmp = {
+      username: data.get('username'),
+      password: data.get('password'),
+    }
 
-  const onSubmit = async (formData) => {
-    axios.post('http://localhost:3001/api/login', formData)
+    axios.post('http://localhost:3002/api/login', tmp)
       .then((response) => {
         const { data } = response;
-        setConnexionData(data);
+        // setConnexionData(data);
         console.log(data, 'from retour api');
         if (data.success) {
           console.log(data, "on navigate lol");
-          navigate("/play", { replace: true, state: { username: formData.username } });
+          navigate("/play", { replace: true, state: { username: tmp.username } });
         }
       });
-  }
-  console.log(errors);
+    // eslint-disable-next-line no-console
+    console.log({
+      username: data.get('username'),
+      password: data.get('password'),
+    });
+  };
+
   return (
-    <div className='login-comp center'>
-      <div className='inner-login form-card'>
-        {connexionData && !connexionData.success ? <span className='error'>{connexionData.message}</span> : ""}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='username center'>
-            {<label htmlFor='username'>Username</label>}
-            <input type="texte" {...register('username', { required: true })} placeholder='Enter username'></input>
-            <span>{errors.username?.message}</span>
-          </div>
-          <div className='password center'>
-            {<label htmlFor='password'>Password</label>}
-            <input type="password" {...register('password', { required: true })} placeholder='Enter password'></input>
-            <span>{errors.password?.message}</span>
-          </div>
-          <button className='btn btn-success'>Connection</button>
-        </form>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <NavLink exact to="#">
+                  Forgot password?
+                </NavLink>
+              </Grid>
+              <Grid item>
+                <NavLink exact to="/signin">
+                  Don't have an account? Sign Up
+                </NavLink>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
   );
-};
+}
 
 export default Login;
