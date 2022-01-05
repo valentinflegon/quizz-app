@@ -1,35 +1,36 @@
-.navbar{
-    /* border-width: 1px;
-    border-style: solid;
-    border-color:black;
-    border-radius: 10px; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 6rem;
+// .navbar{
+//     /* border-width: 1px;
+//     border-style: solid;
+//     border-color:black;
+//     border-radius: 10px; */
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 2rem 6rem;
 
-    /* .logo{
-        width: 240px;
-        height: 31px;
-    } */
-}
+//     /* .logo{
+//         width: 240px;
+//         height: 31px;
+//     } */
+// }
 
-.navbar-links{
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
+// .navbar-links{
+//     flex: 1;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+// }
 
-.navbar-links_logo img{
-    width: 240px;
-    height: 31px;
-}
+// .navbar-links_logo img{
+//     width: 240px;
+//     height: 31px;
+// }
 
-.navbar-links_containers {
-    display: flex;
-    flex-direction: row;
-}
+// .navbar-links_containers {
+//     display: flex;
+//     flex-direction: row;
+// }
+
 
 .navbar-sign{
     display: flex;
@@ -37,8 +38,8 @@
     align-items: center;
 }
 
-.navbar-sign p,
-.navbar-links_containers p{
+.navbar-sign p, .menu-leaderboard, .menu-login, .menu-signin,
+.navbar-links_containers p, .leaderboard, .menu-logout{
     font-family: var(--font-family);
     font-weight: bold;
     font-size: 15px;
@@ -49,16 +50,21 @@
     cursor: pointer;
 }
 
+.leaderboard{
+    margin-top: 3%;
+}
+
 .navbar-signin_button{
-    border-color: #FFAB7B;
+    border-color: #000000;
     background-color: white;
 }
+
 
 .navbar-sign button,
 .navbar-menu_container button {
     padding: 0.5rem 1rem;
     color: #fff;
-    background: #FF4820;
+    background: #202020;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
@@ -67,4 +73,16 @@
     outline: none;
     cursor: pointer;
     border-radius: 5px;
+    
+}
+
+.navbar-sign{
+    margin-left: 70%;
+    margin-right: 10%;
+}
+
+
+
+.navbar{
+    background-color: rgb(255, 150, 29);
 }

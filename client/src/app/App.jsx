@@ -16,7 +16,7 @@ const App = () => {
           <Route exact path="/countryDistances" element={<CountryDist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );
