@@ -1,5 +1,5 @@
 export { default as Home } from './Home';
 export { default as NotFound } from './NotFound';
 export { default as Play } from './Play';
-export { default as Login } from './auth/Login';
-export { default as Signin } from './auth/Signin';
+export { default as LogIn } from './auth/LogIn';
+export { default as SignIn } from './auth/SignIn';

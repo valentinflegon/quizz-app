@@ -26,17 +26,17 @@ const GamemodChoice = () => {
     setCountries([pays1, pays2]);
   }
   return (
-    <div className='gamemodchoice container'>
+    <div className='gamemodchoice container form-card center'>
       {state && <h1>wallah le game mod choice a bien capté que c'etait {state.username} le boss !</h1>}
-      <div className='row mt-3'>
+      <div className='row mt-3 form-card'>
         <h5>Jouer au mode Distance</h5>
-        <div className='col'>distance entre pays</div>
-        <div className='col'>distance entre villes</div>
+        <div className='col'><NavLink exact to="/play" state={{mode: "Distance entre pays"}}>Distance entre pays</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{mode: "Distance entre villes"}}>Distance entre villes</NavLink></div>
       </div>
-      <div className='row mt-3'>
+      <div className='row mt-3 form-card'>
         <h5>Jouer au mode Population</h5>
-        <div className='col'>Populations de pays</div>
-        <div className='col'>Populations de villes</div>
+        <div className='col'><NavLink exact to="/play" state={{mode: "Population de pays"}}>Population de pays</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{mode: "Population de villes"}}>Population de villes</NavLink></div>
       </div>
       {countries &&
         <NavLink exact to="/countryDistances" state={{ from: [countries[0], countries[1]] }}>jouer au mode distance country</NavLink>
