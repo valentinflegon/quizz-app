@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LogIn, SignIn, Play, NotFound } from '../pages';
-import { Navbar, Footer, CountryDist } from '../components';
+import { Home, LogIn, SignIn, Play, NotFound, Leaderboard } from '../pages';
+import { Navbar, Footer, CountryDist, LeaderBoard } from '../components';
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
           <Route exact path="/signin" element={<SignIn />} />
           <Route exact path="/play" element={<Play />} />
           <Route exact path="/countryDistances" element={<CountryDist />} />
+          <Route exact path="/leaderboard" element={<LeaderBoard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* <Footer /> */}
