@@ -69,7 +69,7 @@ const NavBar = () => {
   };
 
   return isLogged ? ( //isLogged true
-    <AppBar position="static">
+    <AppBar className='navbar' position="static">
       <Container className="navbar" maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
