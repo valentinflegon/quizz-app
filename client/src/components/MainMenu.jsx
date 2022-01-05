@@ -1,4 +1,5 @@
 import React from 'react';
+import { styled } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -7,6 +8,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 const bull = (
   <Box
@@ -19,43 +29,47 @@ const bull = (
 
 const MainMenu = () => {
   return (
-    <><Card sx={{ minWidth: 275, maxWidth: 500, margin:10 }}>
+<>
+<h2>Distance</h2>
+<Grid container className='cards' spacing={2}>
+  <Grid item xs={5}>
+    
+    <Card >
       <CardContent>
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+         Jeux
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
-    <Card sx={{ minWidth: 275, maxWidth: 500, margin:10 }}>
+    
+  </Grid>
+  <Grid item xs={5}>
+    <Card >
       <CardContent>
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
+         Classement
         </Typography>
 
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+      
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
+  </Grid>
+</Grid>
+ 
     <div className='main-menu'>
         <div className='btn btn-light'> <NavLink exact to="/play">Jouer</NavLink></div>
-        <div className='btn btn-light'> <NavLink exact to="/leaderboard">Classement</NavLink></div>
-      </div></>
+      </div>
+
+      </>
   )
+
+
 };
 
 export default MainMenu;
