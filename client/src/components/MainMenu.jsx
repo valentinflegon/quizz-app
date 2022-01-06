@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import {  Footer} from '../components';
+import { Footer } from '../components';
 
 
 
@@ -31,93 +31,87 @@ const bull = (
 
 const MainMenu = () => {
   return (
-<>
+    <>
 
-<div className='row-cards'>
-<Grid container  spacing={2}>
-  <Grid item xs={5}> 
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/play">Jouer</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-    
-  </Grid>
-  <Grid item xs={5}>
-    <Card >
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/leaderboard">Classement</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-</Grid>
-</div>
- 
-<h2>Quizz des Distances</h2>
-   
-<div className='row-cards'>
-<Grid container  spacing={2}>
-  <Grid item xs={5}> 
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/play">Distance entre pays</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-    
-  </Grid>
-  <Grid item xs={5}>
-    <Card >
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/leaderboard">Distance entre villes</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-</Grid>
-</div>
+      <div className='row-cards'>
+        <Grid container spacing={2}>
+          <Grid item xs={5}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/play">Jouer</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
 
- 
-<h2>Quizz des Populations</h2>
-<h5>Les quizz sur la population demande d'approximer le nombre d'habitants par ville ou pays</h5>
-   
-<div className='row-cards'>
-<Grid container  spacing={2}>
-  <Grid item xs={5}> 
-    <Card>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/play">Population d'un pays</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-    
-  </Grid>
-  <Grid item xs={5}>
-    <Card >
-      <CardContent>
-        <Typography variant="h5" component="div">
-        <NavLink exact to="/leaderboard">Population d'une ville</NavLink>
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-</Grid>
-</div>
-<Footer />
-      </>
-  )
+          </Grid>
+          <Grid item xs={5}>
+            <Card >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/leaderboard">Classement</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </div>
+
+      <h2>Quizz des Distances</h2>
+
+      <div className='row-cards'>
+        <Grid container spacing={2}>
+          <Grid item xs={5}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/play">Distance entre pays</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
+
+          </Grid>
+          <Grid item xs={5}>
+            <Card >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/leaderboard">Distance entre villes</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </div>
 
 
-};
+      <h2>Quizz des Populations</h2>
+      <h5>Les quizz sur la population demande d'approximer le nombre d'habitants par ville ou pays</h5>
+
+      <div className='row-cards'>
+        <Grid container spacing={2}>
+          <Grid item xs={5}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/play">Population d'un pays</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
+
+          </Grid>
+          <Grid item xs={5}>
+            <Card >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavLink exact to="/leaderboard">Population d'une ville</NavLink>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </div>
+    </>
+  );
+}
 
 export default MainMenu;
-
-
-    

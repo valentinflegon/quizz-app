@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LogIn, SignIn, Play, NotFound, Contact, AboutUs, Terms_Conditions } from '../pages';
+import { Home, LogIn, SignIn, Play, NotFound} from '../pages';
 import { Navbar, Footer, CountryDist, LeaderBoard,} from '../components';
 
 const App = () => {
@@ -15,12 +15,9 @@ const App = () => {
           <Route exact path="/play" element={<Play />} />
           <Route exact path="/countryDistances" element={<CountryDist />} />
           <Route exact path="/leaderboard" element={<LeaderBoard />} />
-          <Route exact path="/contact" element={<Contact/>} />
-          <Route exact path="/about-us" element={<AboutUs/>} />
-          <Route exact path="/terms-conditions" element={<Terms_Conditions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-       
+        <Footer />
       </BrowserRouter>
     </div>
   );

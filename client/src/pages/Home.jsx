@@ -1,5 +1,5 @@
 import React from 'react';
-import Mainmenu from '../components/MainMenu';
+import { MainMenu } from '../components/';
 import { useLocation } from 'react-router-dom';
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <Mainmenu />
+      <MainMenu />
     </div>
   );
 };
