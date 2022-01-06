@@ -15,9 +15,11 @@ const App = () => {
           <Route exact path="/play" element={<Play />} />
           <Route exact path="/countryDistances" element={<CountryDist />} />
           <Route exact path="/leaderboard" element={<LeaderBoard />} />
-          <Route exact path="/contact" element={<Contact/>} />
-          <Route exact path="/about-us" element={<AboutUs/>} />
-          <Route exact path="/terms-conditions" element={<Terms_Conditions />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/about-us" element={<AboutUs />} />
+          <Route exact path="/temrs-conditions" element={<Terms_Conditions />} />
+
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

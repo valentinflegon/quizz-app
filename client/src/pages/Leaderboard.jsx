@@ -4,7 +4,6 @@ import { LeaderBoard } from '../components/';
 const Leaderboard = () => {
   return (
     <div className='leaderboard-page'>
-      <p>Test</p>
       <LeaderBoard />
     </div>
   );

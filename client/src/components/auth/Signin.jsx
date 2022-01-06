@@ -96,6 +96,7 @@ const Signin = () => {
               <Grid item xs={12}>
                 <TextField
                   required
+                  inputProps={{ maxLength: 12 }}
                   fullWidth
                   id="username"
                   label="Username"
@@ -105,7 +106,7 @@ const Signin = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   id="email"
                   label="Email address"
@@ -115,7 +116,7 @@ const Signin = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   name="password"
                   label="Password"
@@ -126,7 +127,7 @@ const Signin = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   name="confirm-password"
                   label="Confirm password"

@@ -78,8 +78,8 @@ const Login = () => {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              required={true}
               margin="normal"
-              required
               fullWidth
               id="username"
               label="Username"
@@ -88,8 +88,8 @@ const Login = () => {
               autoFocus
             />
             <TextField
+              required={true}
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"

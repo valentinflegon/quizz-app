@@ -89,12 +89,7 @@ const MainMenu = () => {
 </Grid>
 </div>
   </>
-  )
-
-
-};
+  );
+}
 
 export default MainMenu;
-
-
-    

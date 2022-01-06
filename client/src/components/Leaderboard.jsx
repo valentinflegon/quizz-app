@@ -24,31 +24,6 @@ function createData(username, time, score) {
   };
 }
 
-const rows = [
-  // Faire l'appel à l'api (en boucle) permettant de récupérer tout les utilisateurs
-  createData('Simon', 305, 37),
-  createData('Paul', 200, 45),
-  createData('Julien', 100, 99),
-  createData('Michel', 99, 450),
-  createData('Mathis', 50, 10),
-  createData('Ethan', 2001, 0)
-];
-
-async function getUsers(){
-  axios.get('http://localhost:3002/api/users/')
-  .then((response) => {
-    console.log(response.data.data);
-    let usersArray = response.data.data;
-    let i = 0;
-    let j = usersArray.length
-    usersArray.forEach(element => {
-      console.log(element, i++, j--);
-      rows.push(createData(element.username, i++, j--));
-      console.log(rows);
-    });
-  });
-}
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -65,18 +40,28 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
+const rows = [
+  // Faire l'appel à l'api (en boucle) permettant de récupérer tout les utilisateurs
+  createData('Simon', 305, 37),
+  createData('Paul', 200, 45),
+  createData('Julien', 100, 99),
+  createData('Michel', 99, 450),
+  createData('Mathis', 50, 10),
+  createData('Ethan', 2001, 0)
+];
+
+async function getUsers(){
+  axios.get('http://localhost:3002/api/users/')
+  .then((response) => {
+    // console.log(response.data.data);
+    let usersArray = response.data.data;
+    let i = 0;
+    let j = usersArray.length
+    usersArray.forEach(element => {
+      rows.push(createData(element.username, i++, j--));
+    });
+    console.log("Rows ",rows);
   });
-  return stabilizedThis.map((el) => el[0]);
 }
 
 const headCells = [
@@ -104,6 +89,7 @@ function EnhancedTableHead(props) {
   const { order, orderBy, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
+    event.preventDefault();
     onRequestSort(event, property);
   };
 
@@ -149,30 +135,32 @@ const LeaderBoard = () => {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   getUsers();
-
   const handleRequestSort = (event, property) => {
+    event.preventDefault();
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
   const handleChangePage = (event, newPage) => {
+    event.preventDefault();
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
+    event.preventDefault();
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   const handleChangeDense = (event) => {
+    event.preventDefault();
     setDense(event.target.checked);
   };
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
