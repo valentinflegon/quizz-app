@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 
-
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -31,16 +30,15 @@ const bull = (
 const MainMenu = () => {
   return (
 <>
-<section>
-  idk
-</section>
+
+
  
-<h2>Quizz des Distances</h2>
+<h2 className='cate-title'>Quizz des Distances</h2>
    
-<div className='row-cards'>
-<Grid container  spacing={2}>
-  <Grid item xs={5}> 
-    <Card >
+<div className='row'  >
+<Grid container spacing={2}>
+  <Grid item xs={6}> 
+    <Card className='card' >
       <CardContent>
         <Typography variant="h5" component="div">
         <NavLink exact to="/play">Distance entre pays</NavLink>
@@ -49,8 +47,8 @@ const MainMenu = () => {
     </Card>
     
   </Grid>
-  <Grid item xs={5}>
-    <Card >
+  <Grid item xs={6}>
+    <Card className='card'>
       <CardContent>
         <Typography variant="h5" component="div">
         <NavLink exact to="/leaderboard">Distance entre villes</NavLink>
@@ -61,14 +59,12 @@ const MainMenu = () => {
 </Grid>
 </div>
 
- 
-<h2>Quizz des Populations</h2>
-<h5>Les quizz sur la population demande d'approximer le nombre d'habitants par ville ou pays</h5>
+<h2 className='cate-title'>Quizz des Populations</h2>
    
-<div className='row-cards'>
-<Grid container  spacing={2}>
-  <Grid item xs={5}> 
-    <Card>
+<div className='row'  >
+<Grid container spacing={2}>
+  <Grid item xs={6}> 
+    <Card className='card' >
       <CardContent>
         <Typography variant="h5" component="div">
         <NavLink exact to="/play">Population d'un pays</NavLink>
@@ -77,8 +73,8 @@ const MainMenu = () => {
     </Card>
     
   </Grid>
-  <Grid item xs={5}>
-    <Card >
+  <Grid item xs={6}>
+    <Card className='card'>
       <CardContent>
         <Typography variant="h5" component="div">
         <NavLink exact to="/leaderboard">Population d'une ville</NavLink>
@@ -88,6 +84,8 @@ const MainMenu = () => {
   </Grid>
 </Grid>
 </div>
+ 
+
   </>
   );
 }
