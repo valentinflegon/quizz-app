@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, LogIn, SignIn, Play, NotFound, Contact, AboutUs, Terms_Conditions } from '../pages';
-import { Navbar, CountryDist, LeaderBoard,} from '../components';
+import { Navbar, CountryDist, LeaderBoard,Footer} from '../components';
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           <Route exact path="/terms-conditions" element={<Terms_Conditions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-       
+        <Footer />
       </BrowserRouter>
     </div>
   );
