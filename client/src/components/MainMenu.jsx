@@ -38,23 +38,27 @@ const MainMenu = () => {
 <div className='row'  >
 <Grid container spacing={2}>
   <Grid item xs={6}> 
+  <NavLink  exact to="/dist-countries">
     <Card className='card' >
       <CardContent>
         <Typography variant="h5" component="div">
-        <NavLink exact to="/play">Distance entre pays</NavLink>
+          Distance entre pays
         </Typography>
       </CardContent>
     </Card>
+    </NavLink>
     
   </Grid>
   <Grid item xs={6}>
+  <NavLink  exact to="/dist-cities">
     <Card className='card'>
       <CardContent>
         <Typography variant="h5" component="div">
-        <NavLink exact to="/leaderboard">Distance entre villes</NavLink>
+        Distance entre villes
         </Typography>
       </CardContent>
     </Card>
+    </NavLink>
   </Grid>
 </Grid>
 </div>
@@ -64,23 +68,26 @@ const MainMenu = () => {
 <div className='row'  >
 <Grid container spacing={2}>
   <Grid item xs={6}> 
+  <NavLink  exact to="/pop-countries">
     <Card className='card' >
       <CardContent>
         <Typography variant="h5" component="div">
-        <NavLink exact to="/play">Population d'un pays</NavLink>
+        Population d'un pays
         </Typography>
       </CardContent>
     </Card>
-    
+    </NavLink>
   </Grid>
   <Grid item xs={6}>
+  <NavLink  exact to="/dist-cities">
     <Card className='card'>
       <CardContent>
         <Typography variant="h5" component="div">
-        <NavLink exact to="/leaderboard">Population d'une ville</NavLink>
+        Population d'une ville
         </Typography>
       </CardContent>
     </Card>
+    </NavLink>
   </Grid>
 </Grid>
 </div>

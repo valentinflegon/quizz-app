@@ -5,9 +5,7 @@ import logo from '../assets/logo.svg';
 const Footer = () => {
   return (
     <div className='footer'>
-        <div className='footer-links_logo'>
-          <NavLink className='logo' to="/">GEOQUIZZ</NavLink>
-        </div>
+       
         <div className='footer-text'>
           <div>
             <NavLink  to='/contact'>Contact</NavLink>
