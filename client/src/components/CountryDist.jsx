@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const CountryDist = () => {
-
+  
   let location = useLocation();
   console.log(location.state, 'les props avec uselocation');
 

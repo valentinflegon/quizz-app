@@ -69,6 +69,7 @@ const NavBar = () => {
   };
 
   return isLogged ? ( //isLogged true
+    <div className='navbar1'>
     <AppBar className='navbar' position="static">
       <Container className="navbar" maxWidth="xl">
         <Toolbar disableGutters>
@@ -178,9 +179,11 @@ const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    </div>
   ) : (
     //isLogged flase
-    <AppBar className='navbar' position="static">
+    <div className='navbar1'>
+    <AppBar  position="static">
       <Container className="navbar" maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -274,6 +277,7 @@ const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    </div>
   );
 };
 export default NavBar;

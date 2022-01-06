@@ -5,24 +5,24 @@ import logo from '../assets/logo.svg';
 const Footer = () => {
   return (
     <div className='footer'>
-      <div className='footer-links'>
         <div className='footer-links_logo'>
-          <NavLink to="/"><img src={logo} alt="logo" /></NavLink>
+          <NavLink className='logo' to="/">GEOQUIZZ</NavLink>
         </div>
-        <div className='footer-links_containers'>
-          <div className="community">
-            <NavLink to="/">
-              <p>Community</p>
-            </NavLink>
+        <div className='footer-text'>
+          <div>
+            <NavLink  to='/contact'>Contact</NavLink>
           </div>
-          <NavLink to="/aboutus">
-            <p>About us</p>
-          </NavLink>
-          <div className='footer-copyright'>
-            @Geoquizz
+          <div>
+          <NavLink  to='/about-us'>About us</NavLink>
+          </div>
+          <div>
+          <NavLink  to='/terms-conditions'>Terms and Conditions</NavLink>
+
+          </div>
+          <div>
+          @GEOQUIZZ
           </div>
         </div>
-      </div>
     </div>
   )
 }

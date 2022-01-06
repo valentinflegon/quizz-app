@@ -4,3 +4,6 @@ export { default as Play } from './Play';
 export { default as LogIn } from './auth/LogIn';
 export { default as SignIn } from './auth/SignIn';
 export { default as Leaderboard } from './Leaderboard';
+export { default as AboutUs } from './AboutUs';
+export { default as Contact } from './Contact';
+export { default as Terms_Conditions } from './Terms_Conditions';
