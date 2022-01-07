@@ -6,7 +6,9 @@
 }
 
 body {
-    background: var( --color-bg)
+    background: var( --color-bg);
+    min-width: 350px;
+    
 }
 
 a {

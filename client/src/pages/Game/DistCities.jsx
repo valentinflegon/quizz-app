@@ -1,11 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import QuestionCard from '../../components/QuestionCard';
+
+const NUMBERQUESTION = 10;
 
 const DistCities = () => {
+    const currentQuestion = 1;
   return (
-    <div>
-      <h1>DistCities</h1>
-    </div>
+    <>
+    <h1>Quizz Distance Villes</h1>
+     
+     <QuestionCard currentQuestion={currentQuestion} question={'Quelle est la distance entre Marseille et Bordeaux ?'} inputText={'Distance en KM'} /> 
+
+    </>
   );
 };
 
