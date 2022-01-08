@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import { NavLink, useLocation } from "react-router-dom";
 import QuestionCard from "../../components/QuestionCard";
 import { Card, Button } from "@mui/material";
+import '../../styles/components/_DistCities.scss'
+import TextField from '@mui/material/TextField';
+
 
 const NUMBERQUESTION = 10;
 
 const DistCities = () => {
   let { state } = useLocation();
-  console.log(state, "from game mod choice");
 
   const data = require("../../components/cities.json");
   function getRandomInt(max) {
@@ -26,50 +28,67 @@ const DistCities = () => {
     const citie2 = data[nb2];
     data.splice(nb2, 1);
     setCities([citie1, citie2]);
+
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
   }
 
-  if (currentQuestion == 0) { //Pas encore commencé
+  function newGame(){
+    setCurrentQuestion([parseInt(0) + 1]);
+  }
+
+  if (currentQuestion == 0) {
     return (
       <>
         <h1>Quizz Distance Villes</h1>
-
-        <div className="button">
-          <Button onClick={loadCities} variant="contained">
-            Commencer
-          </Button>
-        </div>
+        <Card className='startCard' >
+            <div className="button">
+            <Button onClick={loadCities} variant="contained">
+              Commencer
+            </Button>
+          </div>
+        </Card>
       </>
     );
   }
-  if (currentQuestion == 11) { // Quizz fini
+  if (currentQuestion == NUMBERQUESTION + 1) {
     return (
       <>
         <h1>Quizz Distance Villes</h1>
-
-        <div className="button">Finito </div>
+        <Card className='startCard' >
+            
+            <div>Tab score </div>
+            <Button onClick={loadCities,newGame} variant="contained">
+            Next
+          </Button>
+        </Card>
       </>
     );
-  } else
+  } 
+  else
     return (
       <>
         <h1>Quizz Distance Villes</h1>
 
-        {cities && currentQuestion && (
-          <QuestionCard
-            currentQuestion={currentQuestion}
-            question={"Quelle est la distance entre "}
-            citie1={cities[0]}
-            citie2={cities[1]}
-            inputText={"Distance en KM"}
-          />
-        )}
+        <Card className='questionCard'>
+          <h2>Question {currentQuestion}/10: <br /> <span>Quelle est la distance entre  {cities[0]} et {cities[1]} ?</span></h2>
+
+          <TextField
+            className='inputField'
+            id="outlined-number"
+            label="Réponse"
+            type="number"
+            placeholder= "Distance en KM"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          /> 
+        
         <div className="button">
           <Button onClick={loadCities} variant="contained">
             Next
           </Button>
         </div>
-      </>
+        </Card></>
     );
 };
 

@@ -9,7 +9,6 @@ const NUMBERQUESTION = 10;
 
 
 function QuestionCard({currentQuestion, question, inputText, citie1, citie2}){
-  
     return (
         <Card className='questionCard'>
           <h2>Question {currentQuestion}/10: <br /> <span>{question} {citie1} et {citie2} ?</span></h2>
