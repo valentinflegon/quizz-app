@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LogIn, SignIn, Play, NotFound, Contact, AboutUs, Terms_Conditions, PopCities, PopCountries, DistCities, DistCountries } from '../pages';
-import { Navbar, CountryDist, LeaderBoard,Footer} from '../components';
+import { Home, LogIn, SignIn, Play, NotFound, Contact, AboutUs, Terms_Conditions, PopCities, PopCountries, DistCities, DistCountries, Leaderboard } from '../pages';
+import { Navbar, CountryDist,Footer} from '../components';
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
           <Route exact path="/signin" element={<SignIn />} />
           <Route exact path="/play" element={<Play />} />
           <Route exact path="/countryDistances" element={<CountryDist />} />
-          <Route exact path="/leaderboard" element={<LeaderBoard />} />
+          <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/about-us" element={<AboutUs />} />
           <Route exact path="/terms-conditions" element={<Terms_Conditions />} />
@@ -22,11 +22,6 @@ const App = () => {
           <Route exact path="/dist-countries" element={<DistCountries />} />
           <Route exact path="/pop-cities" element={<PopCities />} />
           <Route exact path="/pop-countries" element={<PopCountries />} />
-
-
-
-
-
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

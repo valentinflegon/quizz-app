@@ -4,24 +4,63 @@
       "_id": 516542300002222,
       "username": "eriubfe",
       "password": "zehbfen",
-      "email": "zejbferle"
-    }
-  ],
-  "Scores": [
-    {
-      "user": "_id",
-      "categorie": [
+      "email": "zejbferle",
+      "catégorie":[
         {
-          "popCity": [
+          "cat1":[
             {
-              "date": "la date",
-              "result": 150
+              "score":200,
+              "date":"07/09/2022"
+            },
+            {
+              "score":250,
+              "date":"07/09/2022"
+            },
+            {
+              "score":240,
+              "date":"07/09/2022"
             }
           ],
-          "popCountry": [
+          "cat2":[
             {
-              "date": "la date",
-              "result": 150
+              "score":200,
+              "date":"07/09/2022"
+            },
+            {
+              "score":250,
+              "date":"07/09/2022"
+            },
+            {
+              "score":240,
+              "date":"07/09/2022"
+            }
+          ],
+          "cat3":[
+            {
+              "score":200,
+              "date":"07/09/2022"
+            },
+            {
+              "score":250,
+              "date":"07/09/2022"
+            },
+            {
+              "score":240,
+              "date":"07/09/2022"
+            }
+          ],
+          "cat4":[
+            {
+              "score":200,
+              "date":"07/09/2022"
+            },
+            {
+              "score":250,
+              "date":"07/09/2022"
+            },
+            {
+              "score":240,
+              "date":"07/09/2022"
             }
           ]
         }
