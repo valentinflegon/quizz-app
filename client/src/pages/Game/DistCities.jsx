@@ -23,16 +23,17 @@ const DistCities = () => {
   }
 
   const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
+    createData("Ville1/Ville2", 3, 300, 400, 3),    
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+    createData("Ville1/Ville2", 3, 300, 400, 3),
+
   ];
 
   const data = require("../../components/cities.json");
@@ -103,9 +104,9 @@ const DistCities = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Question</TableCell>
-                  <TableCell align="right">Précision</TableCell>
-                  <TableCell align="right">Votre réponse</TableCell>
-                  <TableCell align="right">Correction</TableCell>
+                  <TableCell align="right">Précision (%)</TableCell>
+                  <TableCell align="right">Votre réponse (KM)</TableCell>
+                  <TableCell align="right">Correction (KM)</TableCell>
                   <TableCell align="right">Score</TableCell>
                 </TableRow>
               </TableHead>
