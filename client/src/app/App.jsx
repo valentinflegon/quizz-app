@@ -1,7 +1,28 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LogIn, SignIn, Play, NotFound, AboutUs, Terms_Conditions, PopCities, PopCountries, DistCities, DistCountries, Leaderboard } from '../pages';
-import { Navbar, CountryDist,Footer} from '../components';
+import { 
+  BrowserRouter, 
+  Routes, 
+  Route,
+  } from "react-router-dom";
+import { 
+  Home, 
+  LogIn, 
+  SignIn, 
+  Play, 
+  NotFound, 
+  AboutUs, 
+  Terms_Conditions, 
+  PopCities, 
+  PopCountries, 
+  DistCities,
+  DistCountries, 
+  Leaderboard,
+  } from '../pages';
+import { 
+  Navbar, 
+  CountryDist,
+  Footer,
+  } from '../components';
 
 const App = () => {
   return (

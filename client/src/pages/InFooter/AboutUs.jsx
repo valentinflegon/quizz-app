@@ -1,17 +1,17 @@
 import React from 'react';
 import '../../styles/_aboutUs.scss';
 
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Divider from '@mui/material/Divider';
+import {
+  Paper,
+  Typography,
+  Grid,
+  Box,
+  Divider,
+  Link,
+ } from "@mui/material";
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
-//import Link from "@material-ui";
-import Link from '@mui/material/Link';
 
 const AboutUs = () => {
   return (

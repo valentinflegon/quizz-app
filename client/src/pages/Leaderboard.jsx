@@ -1,10 +1,12 @@
 import React from 'react';
-import { LeaderBoard, SvgButton } from '../components/';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import {
+  Button,
+  ButtonGroup,
+  Box,
+  Typography,
+ } from '@mui/material';
+
 import { NavLink } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 const Leaderboard = () => {
   return (

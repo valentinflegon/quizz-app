@@ -1,16 +1,17 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import axios from 'axios';
 import { useNavigate, NavLink } from 'react-router-dom';
 
@@ -20,7 +21,7 @@ function Copyright(props) {
       {'Copyright © '}
       <NavLink exact to="/">
         Geo-Quizz
-      </NavLink>  
+      </NavLink>
       {' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,7 +32,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Login = () => {
-  
+
   let navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -102,12 +103,12 @@ const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 , bgcolor:blue[500]}}
+              sx={{ mt: 3, mb: 2, bgcolor: blue[500] }}
             >
               S'enregistrer
             </Button>
             <Grid container alignItems="center"
-            justifyContent="center">
+              justifyContent="center">
               <Grid item>
                 <NavLink exact to="/signin">
                   Vous n'avez pas de compte ? S'inscrire
