@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LogIn, SignIn, Play, NotFound, Contact, AboutUs, Terms_Conditions, PopCities, PopCountries, DistCities, DistCountries, Leaderboard } from '../pages';
+import { Home, LogIn, SignIn, Play, NotFound, AboutUs, Terms_Conditions, PopCities, PopCountries, DistCities, DistCountries, Leaderboard } from '../pages';
 import { Navbar, CountryDist,Footer} from '../components';
 
 const App = () => {
@@ -15,7 +15,6 @@ const App = () => {
           <Route exact path="/play" element={<Play />} />
           <Route exact path="/countryDistances" element={<CountryDist />} />
           <Route exact path="/leaderboard" element={<Leaderboard />} />
-          <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/about-us" element={<AboutUs />} />
           <Route exact path="/terms-conditions" element={<Terms_Conditions />} />
           <Route exact path="/dist-cities" element={<DistCities />} />

@@ -5,7 +5,6 @@ export { default as LogIn } from './auth/LogIn';
 export { default as SignIn } from './auth/SignIn';
 export { default as Leaderboard } from './Leaderboard';
 export { default as AboutUs } from './InFooter/AboutUs';
-export { default as Contact } from './InFooter/Contact';
 export { default as Terms_Conditions } from './InFooter/Terms_Conditions';
 export { default as DistCities } from './Game/DistCities';
 export { default as DistCountries } from './Game/DistCountries';

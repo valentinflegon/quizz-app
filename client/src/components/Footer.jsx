@@ -1,13 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.svg';
+import {Typography} from '@mui/material';
 
 const Footer = () => {
   return (
     <div className='footer'>
       <div className='footer-text'>
         <div>
-          <NavLink to='/contact'>Contactez-nous</NavLink>
+          <Typography variant="p" key="Email" component="a" href="mailto:geoquizz@gmail.com">
+            Contacter-nous
+          </Typography>
         </div>
         <div>
           <NavLink to='/about-us'>À propos</NavLink>
