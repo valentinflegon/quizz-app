@@ -32,13 +32,22 @@ const DistCities = () => {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
     let citie1 = cities[0];
     let citie2 = cities[1];
-
-    const newList = list.concat({ citie1, citie2, currentQuestion, answer });
+    let accuracyValue = accuracy(answer);
+    const newList = list.concat({ accuracyValue ,citie1, citie2, currentQuestion, answer });
 
     setList(newList);
     loadCities();
   }
 
+  function accuracy(answer){
+    ///////////////////
+    ///////////////////
+    let realAnswer = 200;//mettre le resultat de la requete a l'api
+    accuracy =  100-(Math.abs(answer-realAnswer)*100)/realAnswer
+    if (accuracy<0) return 0
+    else return accuracy
+  }
+  
   
   const data = require("../../components/cities.json");
   function getRandomInt(max) {
@@ -103,7 +112,7 @@ const DistCities = () => {
                     <TableCell component="th" scope="row">
                       {row.citie1} / {row.citie2}
                     </TableCell>
-                    <TableCell align="right"></TableCell>
+                    <TableCell align="right">{row.accuracyValue}</TableCell>
                     <TableCell align="right">{row.answer}</TableCell>
                     <TableCell align="right"></TableCell>
                     <TableCell align="right"></TableCell>

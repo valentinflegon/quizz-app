@@ -10,7 +10,8 @@ import Divider from '@mui/material/Divider';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-import Link from "@material-ui/core/Link";
+//import Link from "@material-ui/core/Link";
+import {BrowserRouter as Link} from "react-router-dom";
 
 const AboutUs = () => {
   return (
