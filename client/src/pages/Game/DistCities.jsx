@@ -79,7 +79,7 @@ const DistCities = () => {
   function newGame() {
     setCurrentQuestion([parseInt(0) + 1]);
     const newList = [];
-
+    setSumScore(0);
     setList(newList);
   }
 
@@ -135,7 +135,7 @@ const DistCities = () => {
                   {" "}
                   <b>Score</b>
                 </TableCell>
-                <TableCell colSpan={4}>{sumScore}</TableCell>
+                <TableCell colSpan={4}><b>{sumScore}</b></TableCell>
               </TableRow>
             </TableBody>
           </Table>
