@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import axios from 'axios';
@@ -18,7 +19,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <NavLink exact to="/">
-        Your Website
+        Geo-Quizz
       </NavLink>  
       {' '}
       {new Date().getFullYear()}
@@ -70,11 +71,11 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: blue[500] }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            S'enregistrer
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -82,7 +83,7 @@ const Login = () => {
               margin="normal"
               fullWidth
               id="username"
-              label="Username"
+              label="Nom d'utilisateur"
               name="username"
               autoComplete="username"
               autoFocus
@@ -92,7 +93,7 @@ const Login = () => {
               margin="normal"
               fullWidth
               name="password"
-              label="Password"
+              label="Mot de passe"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -101,25 +102,21 @@ const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 , bgcolor:blue[500]}}
             >
-              Sign In
+              S'enregistrer
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <NavLink exact to="#">
-                  Forgot password?
-                </NavLink>
-              </Grid>
+            <Grid container alignItems="center"
+            justifyContent="center">
               <Grid item>
                 <NavLink exact to="/signin">
-                  Don't have an account? Sign Up
+                  Vous n'avez pas de compte ? S'inscrire
                 </NavLink>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 3, mb: 3 }} />
       </Container>
     </ThemeProvider>
   );

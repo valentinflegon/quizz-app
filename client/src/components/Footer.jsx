@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='footer-text'>
         <div>
           <Typography variant="p" key="Email" component="a" href="mailto:geoquizz@gmail.com">
-            Contacter-nous
+            Nous contacter
           </Typography>
         </div>
         <div>
@@ -18,7 +18,9 @@ const Footer = () => {
           <NavLink to='/terms-conditions'>Termes & Conditions </NavLink>
         </div>
         <div>
-          @GEOQUIZZ
+          <NavLink exact to="/">
+            @GEOQUIZZ
+          </NavLink>
         </div>
       </div>
     </div>

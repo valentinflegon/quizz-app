@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { blue } from '@mui/material/colors';
 
 import axios from 'axios';
 import { useNavigate, NavLink } from 'react-router-dom';
@@ -18,7 +19,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <NavLink exact to="/">
-        Your Website
+        Geo-Quizz
       </NavLink>
       {' '}
       {new Date().getFullYear()}
@@ -85,11 +86,11 @@ const Signin = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: blue[500] }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            S'inscrire
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -99,7 +100,7 @@ const Signin = () => {
                   inputProps={{ maxLength: 12 }}
                   fullWidth
                   id="username"
-                  label="Username"
+                  label="Nom d'utilisateur"
                   name="username"
                   autoComplete="username"
                 />
@@ -109,7 +110,7 @@ const Signin = () => {
                   required={true}
                   fullWidth
                   id="email"
-                  label="Email address"
+                  label="Adresse email"
                   name="email"
                   autoComplete="email"
                 />
@@ -119,7 +120,7 @@ const Signin = () => {
                   required={true}
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Mot de passe"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -130,7 +131,7 @@ const Signin = () => {
                   required={true}
                   fullWidth
                   name="confirm-password"
-                  label="Confirm password"
+                  label="Confirmer mot de passe"
                   type="password"
                   id="confirm-password"
                   autoComplete="confirm-password"
@@ -141,18 +142,18 @@ const Signin = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 , bgcolor: blue[500]}}
             >
-              Sign Up
+              S'inscrire
             </Button>
             <Grid container justifyContent="center">
                 <NavLink exact to="/login">
-                  Already have an account? Sign in
+                  Vous avez déjà un compte? S'enregistrer
                 </NavLink>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        <Copyright sx={{ mt: 3, mb: 3 }} />
       </Container>
     </ThemeProvider>
   );
