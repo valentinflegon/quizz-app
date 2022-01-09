@@ -18,31 +18,32 @@ const NUMBERQUESTION = 10;
 const DistCities = () => {
   let { state } = useLocation();
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  const [list, setList] = React.useState([]);
+  const [open, setOpen] = React.useState(true);
+  const [cities, setCities] = useState(null);
+  const [answer, setAnswer] = React.useState("");
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  function handleChange(event) {
+    setAnswer(event.target.value);
   }
 
-  const rows = [
-    createData("Ville1/Ville2", 3, 300, 400, 3),    
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
-    createData("Ville1/Ville2", 3, 300, 400, 3),
+  function handleAdd() {
+    setCurrentQuestion([parseInt(currentQuestion) + 1]);
+    let citie1 = cities[0];
+    let citie2 = cities[1];
 
-  ];
+    const newList = list.concat({ citie1, citie2, currentQuestion, answer });
 
+    setList(newList);
+    loadCities();
+  }
+
+  
   const data = require("../../components/cities.json");
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-
-  const [cities, setCities] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   function loadCities() {
     const nb = getRandomInt(data.length);
@@ -52,29 +53,14 @@ const DistCities = () => {
     const citie2 = data[nb2];
     data.splice(nb2, 1);
     setCities([citie1, citie2]);
-
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
-    // fetch('https://fr.distance24.org/route.json?stops=Hamburg|Berlin',{
-    //     method:'GET',
-    //     headers:{
-    //         "Accept": "application/json",
-    //         "Content-Type": 'application/json',
-    //   'Access-Control-Allow-Origin': '*',
-    //   'Access-Control-Allow-Headers': 'Content-Type',
-    //   'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-    //   'Authorization': 'Bearer key'
-    //     }
-    // })
-    // .the(resp => { return resp.json();})
-    // .then(responseData => {console.log(responseData); return responseData;})
-    // .then(data => {this.setState({"questions" : data});})
-    // .catch(err => {
-    //     console.log("fetch error" + err);
-    // });
   }
 
   function newGame() {
     setCurrentQuestion([parseInt(0) + 1]);
+    const newList = [];
+
+    setList(newList);
   }
 
   if (currentQuestion == 0) {
@@ -95,76 +81,99 @@ const DistCities = () => {
     return (
       <>
         <h1>Quizz Distance Villes</h1>
-          <TableContainer className='tab'component={Paper}>
-            <Table
-              sx={{ minWidth: 650 }}
-              size="small"
-              aria-label="a dense table"
-            >
-              <TableHead>
-                <TableRow>
-                  <TableCell>Question</TableCell>
-                  <TableCell align="right">Précision (%)</TableCell>
-                  <TableCell align="right">Votre réponse (KM)</TableCell>
-                  <TableCell align="right">Correction (KM)</TableCell>
-                  <TableCell align="right">Score</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
+        <TableContainer className="tab" component={Paper}>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell><b>Question</b></TableCell>
+                <TableCell align="right"><b>Précision(%)</b></TableCell>
+                <TableCell align="right"><b>Votre réponse(KM)</b></TableCell>
+                <TableCell align="right"><b>Correction(KM)</b></TableCell>
+                <TableCell align="right"><b>Score</b></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {list.map((row) => (
+                <>
+                  {" "}
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.name}
+                      {row.citie1} / {row.citie2}
                     </TableCell>
-                    <TableCell align="right">{row.calories}</TableCell>
-                    <TableCell align="right">{row.fat}</TableCell>
-                    <TableCell align="right">{row.carbs}</TableCell>
-                    <TableCell align="right">{row.protein}</TableCell>
+                    <TableCell align="right"></TableCell>
+                    <TableCell align="right">{row.answer}</TableCell>
+                    <TableCell align="right"></TableCell>
+                    <TableCell align="right"></TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        <div className="buttonEnd"> 
-            <Button onClick={(loadCities, newGame)}  variant="contained">
+                </>
+              ))}
+              <TableRow>
+                <TableCell colSpan={4}>
+                  {" "}
+                  <b>Score</b>
+                </TableCell>
+                <TableCell colSpan={4}>30</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <div className="buttonEnd">
+          <Button onClick={(loadCities, newGame)} variant="contained">
             Recommencer
           </Button>
         </div>
-         
       </>
     );
-  } else
+  }
+  //ajouter a un tableau le numero de la question, le nom des villes
+  //la distance de l'input et la bonne réponse
+  else
     return (
       <>
         <h1>Quizz Distance Villes</h1>
 
         <Card className="questionCard">
           <h2>
-            Question {currentQuestion}/10: <br />{" "}
+            Question {currentQuestion}/10: <br />
             <span>
               Quelle est la distance entre {cities[0]} et {cities[1]} ?
             </span>
           </h2>
 
-          <TextField
+          {/* <TextField
             className="inputField"
             id="outlined-number"
             label="Réponse"
             type="number"
             placeholder="Distance en KM"
+            onChange={handleChange}
+            value={answer}
             InputLabelProps={{
               shrink: true,
             }}
           />
+           */}
+
+          <TextField type="number" label="Distance en KM" variant="outlined" 
+            onChange={handleChange}
+            value={answer}   />
 
           <div className="button">
-            <Button onClick={loadCities} variant="contained">
+            <Button onClick={handleAdd}  variant="contained">
               Next
             </Button>
           </div>
+          {list.map((item) => (
+            <li key={item.id}>
+              {item.citie1}
+              {item.citie2}
+              {item.answer}
+              {item.currentQuestion}
+            </li>
+          ))}
         </Card>
       </>
     );
