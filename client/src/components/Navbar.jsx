@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
+import "../styles/components/_navbar.scss";
+
 
 const pages = ["LeaderBoard"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];

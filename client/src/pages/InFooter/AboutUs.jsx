@@ -10,7 +10,8 @@ import Divider from '@mui/material/Divider';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-import Link from "@material-ui/core/Link";
+//import Link from "@material-ui";
+import Link from '@mui/material/Link';
 
 const AboutUs = () => {
   return (

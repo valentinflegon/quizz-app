@@ -12,6 +12,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axios from "axios";
 
 const NUMBERQUESTION = 10;
 
@@ -30,36 +31,58 @@ const DistCities = () => {
     setAnswer(event.target.value);
   }
 
-
   function handleAdd() {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
     let citie1 = cities[0];
     let citie2 = cities[1];
-    let accuracyValue = accuracy(answer);
-    let scoreQuestion = scoreFunction(accuracyValue)
-    setSumScore(sumScore + scoreQuestion)
-    const newList = list.concat({ accuracyValue,scoreQuestion ,citie1, citie2, currentQuestion, answer });
+    let distance;
+   
+    axios
+      .get(
+        "https://fr.distance24.org/route.json?stops=" +
+          cities[0] +
+          "|" +
+          cities[1]
+      )
+      .then((resp) => {
+        distance = resp.data.distance;
+        console.log(
+          resp.data.distance,
+          "resultat distance entre " + cities[0] + " " + cities[1]
+        );
 
-    setList(newList);
-    loadCities();
+        let accuracyValue = accuracy(answer,distance);
+        let scoreQuestion = scoreFunction(accuracyValue);
+        setSumScore(sumScore + scoreQuestion);
+
+        const newList = list.concat({
+          distance,
+          accuracyValue,
+          scoreQuestion,
+          citie1,
+          citie2,
+          currentQuestion,
+          answer,
+        });
+        setList(newList);
+        console.log(list);
+        loadCities();
+      });
   }
 
-
-
-  function scoreFunction(accuracy){
+  function scoreFunction(accuracy) {
     return Math.ceil(accuracy);
   }
 
-  function accuracy(answer){
+  function accuracy(answer,distance) {
     ///////////////////
     ///////////////////
-    let realAnswer = 200;//mettre le resultat de la requete a l'api
-    accuracy =  100-(Math.abs(answer-realAnswer)*100)/realAnswer
-    if (accuracy<0) return 0
-    else return accuracy
+    let realAnswer = distance; //mettre le resultat de la requete a l'api
+    accuracy = 100 - (Math.abs(answer - realAnswer) * 100) / realAnswer;
+    if (accuracy < 0) return 0;
+    else return accuracy;
   }
-  
-  
+
   const data = require("../../components/cities.json");
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -105,11 +128,21 @@ const DistCities = () => {
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell><b>Question</b></TableCell>
-                <TableCell align="right"><b>Précision(%)</b></TableCell>
-                <TableCell align="right"><b>Votre réponse(KM)</b></TableCell>
-                <TableCell align="right"><b>Correction(KM)</b></TableCell>
-                <TableCell align="right"><b>Score</b></TableCell>
+                <TableCell>
+                  <b>Question</b>
+                </TableCell>
+                <TableCell align="right">
+                  <b>Précision(%)</b>
+                </TableCell>
+                <TableCell align="right">
+                  <b>Votre réponse(KM)</b>
+                </TableCell>
+                <TableCell align="right">
+                  <b>Correction(KM)</b>
+                </TableCell>
+                <TableCell align="right">
+                  <b>Score</b>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -125,7 +158,7 @@ const DistCities = () => {
                     </TableCell>
                     <TableCell align="right">{row.accuracyValue}</TableCell>
                     <TableCell align="right">{row.answer}</TableCell>
-                    <TableCell align="right"></TableCell>
+                    <TableCell align="right">{row.distance}</TableCell>
                     <TableCell align="right">{row.scoreQuestion}</TableCell>
                   </TableRow>
                 </>
@@ -135,7 +168,9 @@ const DistCities = () => {
                   {" "}
                   <b>Score</b>
                 </TableCell>
-                <TableCell colSpan={4}><b>{sumScore}</b></TableCell>
+                <TableCell colSpan={4}>
+                  <b>{sumScore}</b>
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -163,16 +198,19 @@ const DistCities = () => {
             </span>
           </h2>
 
-          <TextField type="number" label="Distance en KM" variant="outlined" 
+          <TextField
+            type="number"
+            label="Distance en KM"
+            variant="outlined"
             onChange={handleChange}
-            value={answer}   />
+            value={answer}
+          />
 
           <div className="button">
-            <Button onClick={handleAdd}  variant="contained">
+            <Button onClick={handleAdd} variant="contained">
               Next
             </Button>
           </div>
-         
         </Card>
       </>
     );
