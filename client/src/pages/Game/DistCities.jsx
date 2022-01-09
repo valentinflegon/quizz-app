@@ -52,6 +52,7 @@ const DistCities = () => {
         );
 
         let accuracyValue = accuracy(answer,distance);
+        accuracyValue = accuracyValue.toFixed(3)
         let scoreQuestion = scoreFunction(accuracyValue);
         setSumScore(sumScore + scoreQuestion);
 
