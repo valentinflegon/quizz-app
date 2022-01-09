@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const GamemodChoice = () => {
-
   let { state } = useLocation();
   console.log(state, "from game mod choice");
 

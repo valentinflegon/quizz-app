@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -50,19 +50,17 @@ const rows = [
   createData('Ethan', 2001, 0)
 ];
 
-async function getUsers(){
-  axios.get('http://localhost:3002/api/users/')
-  .then((response) => {
-    // console.log(response.data.data);
-    let usersArray = response.data.data;
-    let i = 0;
-    let j = usersArray.length
-    usersArray.forEach(element => {
-      rows.push(createData(element.username, i++, j--));
-    });
-    console.log("Rows ",rows);
-  });
-}
+// {
+//     // console.log(response.data.data);
+//     let usersArray = response.data.data;
+//     let i = 0;
+//     let j = usersArray.length
+//     usersArray.forEach(element => {
+//       rows.push(createData(element.username, i++, j--));
+//     });
+//     console.log("Rows ",rows);
+//   });
+// }
 
 const headCells = [
   {
@@ -134,7 +132,17 @@ const LeaderBoard = () => {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  getUsers();
+
+  // const [data, setData] = useState({ rows: [] });
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios.get('http://localhost:3002/api/users/');
+  //     setData(result.data.data)
+  //   };
+  //   fetchData();
+  // }, []);
+
   const handleRequestSort = (event, property) => {
     event.preventDefault();
     const isAsc = orderBy === property && order === 'asc';
@@ -162,7 +170,7 @@ const LeaderBoard = () => {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '50%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
           <Table
