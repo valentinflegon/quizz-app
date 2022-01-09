@@ -22,7 +22,7 @@ const DistCities = () => {
   // const [open, setOpen] = React.useState(true);
   const [cities, setCities] = useState(null);
   const [answer, setAnswer] = React.useState("");
-  const [scoreFinal, setScoreFinal] = React.useState(0);
+  const [sumScore, setSumScore] = React.useState(0);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -30,12 +30,14 @@ const DistCities = () => {
     setAnswer(event.target.value);
   }
 
+
   function handleAdd() {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
     let citie1 = cities[0];
     let citie2 = cities[1];
     let accuracyValue = accuracy(answer);
     let scoreQuestion = scoreFunction(accuracyValue)
+    setSumScore(sumScore + scoreQuestion)
     const newList = list.concat({ accuracyValue,scoreQuestion ,citie1, citie2, currentQuestion, answer });
 
     setList(newList);
@@ -133,7 +135,7 @@ const DistCities = () => {
                   {" "}
                   <b>Score</b>
                 </TableCell>
-                <TableCell colSpan={4}>{scoreFinal}</TableCell>
+                <TableCell colSpan={4}>{sumScore}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
