@@ -19,9 +19,11 @@ const DistCities = () => {
   let { state } = useLocation();
 
   const [list, setList] = React.useState([]);
-  const [open, setOpen] = React.useState(true);
+  // const [open, setOpen] = React.useState(true);
   const [cities, setCities] = useState(null);
   const [answer, setAnswer] = React.useState("");
+  const [scoreFinal, setScoreFinal] = React.useState(0);
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   function handleChange(event) {
@@ -33,10 +35,17 @@ const DistCities = () => {
     let citie1 = cities[0];
     let citie2 = cities[1];
     let accuracyValue = accuracy(answer);
-    const newList = list.concat({ accuracyValue ,citie1, citie2, currentQuestion, answer });
+    let scoreQuestion = scoreFunction(accuracyValue)
+    const newList = list.concat({ accuracyValue,scoreQuestion ,citie1, citie2, currentQuestion, answer });
 
     setList(newList);
     loadCities();
+  }
+
+
+
+  function scoreFunction(accuracy){
+    return Math.ceil(accuracy);
   }
 
   function accuracy(answer){
@@ -115,7 +124,7 @@ const DistCities = () => {
                     <TableCell align="right">{row.accuracyValue}</TableCell>
                     <TableCell align="right">{row.answer}</TableCell>
                     <TableCell align="right"></TableCell>
-                    <TableCell align="right"></TableCell>
+                    <TableCell align="right">{row.scoreQuestion}</TableCell>
                   </TableRow>
                 </>
               ))}
@@ -124,7 +133,7 @@ const DistCities = () => {
                   {" "}
                   <b>Score</b>
                 </TableCell>
-                <TableCell colSpan={4}>30</TableCell>
+                <TableCell colSpan={4}>{scoreFinal}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -152,20 +161,6 @@ const DistCities = () => {
             </span>
           </h2>
 
-          {/* <TextField
-            className="inputField"
-            id="outlined-number"
-            label="Réponse"
-            type="number"
-            placeholder="Distance en KM"
-            onChange={handleChange}
-            value={answer}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-           */}
-
           <TextField type="number" label="Distance en KM" variant="outlined" 
             onChange={handleChange}
             value={answer}   />
@@ -175,14 +170,7 @@ const DistCities = () => {
               Next
             </Button>
           </div>
-          {list.map((item) => (
-            <li key={item.id}>
-              {item.citie1}
-              {item.citie2}
-              {item.answer}
-              {item.currentQuestion}
-            </li>
-          ))}
+         
         </Card>
       </>
     );
