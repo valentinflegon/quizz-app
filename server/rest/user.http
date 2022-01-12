@@ -2,7 +2,7 @@
 GET http://localhost:3002/api/users/
 
 ### get user by id API URL
-GET http://localhost:3002/api/user/61cae7cbceef2d430a317399
+GET http://localhost:3002/api/user/61caee7f20a8bd234109db6
 
 ### add user API URL
 POST http://localhost:3002/api/user/

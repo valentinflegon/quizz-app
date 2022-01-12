@@ -117,7 +117,7 @@ getUserById = async (req, res) => {
       data: user
     });
   } catch (err) {
-    return { success: false, message: "User not found " + err };
+    return res.sendStatus(404);
   }
 }
 
