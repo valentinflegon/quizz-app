@@ -2,16 +2,10 @@
     "definition": {
         "openapi": "3.0.0",
         "info": {
-            "title": "Contact REST API TEST",
+            "title": "Swagger GeoQuizz",
             "description": "A REST API built with Express and MongoDB.",
-            "version": "0.1"
-        },
-        "servers": [
-            {
-                "url": "http: //localhost:3002/api",
-                "description": "Development server"
-            }
-        ]
+            "version": "1.0.6"
+        }
     },
     "apis": [
         "./routes/*.js"

@@ -7,7 +7,7 @@ router.delete('/delete-user/:id', userCtrl.deleteUser);
 router.get('/get-user/:id', userCtrl.getUserById);
 /**
  * @openapi
- * /users:
+ * /api/users:
  *   get:
  *     description: All users
  *     responses:
@@ -22,8 +22,7 @@ router.get('/get-user/:id', userCtrl.getUserById);
  *                    type: object
  *                    properties: 
  *                      id:
- *                        type: integer
- *                        format: int64 
+ *                        type: string 
  *                      username: 
  *                        type: string 
  *                        example: Toto
@@ -32,7 +31,7 @@ router.get('/get-user/:id', userCtrl.getUserById);
  *                        description: The user password is crypted.
  *                      email: 
  *                        type: string 
- *                        description: Must be a valid email format.
+ *                        description: Must be an email format.
  *       '400':
  *         description: Invalid status value
  */
