@@ -1,8 +1,5 @@
-const express = require('express');
-
+const router = require('express').Router();
 const userCtrl = require('../controllers/user-controller');
-
-const router = express.Router();
 
 router.post('/create-user', userCtrl.createUser);
 router.put('/update-user/:id', userCtrl.updateUser);
