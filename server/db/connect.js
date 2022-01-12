@@ -9,7 +9,7 @@ const connectionParams = {
 
 async function connectDB(){
   try{
-    console.log("Openin connection db");
+    console.log("Opening connection db");
     const conn = await mongoose.connect(process.env.MONGO_URI, connectionParams);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   }

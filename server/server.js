@@ -4,10 +4,13 @@ const cors = require('cors');
 const connectDb = require('./db/connect');
 const userRouter = require('./routes/user-router');
 const routes = require('./routes/index');
-
 const app = express();
 connectDb();
 const PORT = 3002;
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const options = require('./swagger-options');
+const openapiSpecification = swaggerJsDoc(options);
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,6 +21,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to quizz application!')
 });
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api', userRouter);
 app.use('/api', routes);
 
