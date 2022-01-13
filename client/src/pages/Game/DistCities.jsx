@@ -18,6 +18,7 @@ const NUMBERQUESTION = 10;
 
 const DistCities = () => {
   let { state } = useLocation();
+  let data = require("../../components/cities.json");
 
   const [list, setList] = React.useState([]);
   // const [open, setOpen] = React.useState(true);
@@ -76,15 +77,12 @@ const DistCities = () => {
   }
 
   function accuracy(answer,distance) {
-    ///////////////////
-    ///////////////////
-    let realAnswer = distance; //mettre le resultat de la requete a l'api
+    let realAnswer = distance; 
     accuracy = 100 - (Math.abs(answer - realAnswer) * 100) / realAnswer;
     if (accuracy < 0) return 0;
     else return accuracy;
   }
 
-  const data = require("../../components/cities.json");
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -92,12 +90,15 @@ const DistCities = () => {
   function loadCities() {
     const nb = getRandomInt(data.length);
     const citie1 = data[nb];
+    console.log(data)
     data.splice(nb, 1);
+
     const nb2 = getRandomInt(data.length);
     const citie2 = data[nb2];
     data.splice(nb2, 1);
     setCities([citie1, citie2]);
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
+
   }
 
   function newGame() {
@@ -105,6 +106,7 @@ const DistCities = () => {
     const newList = [];
     setSumScore(0);
     setList(newList);
+    
   }
 
   if (currentQuestion == 0) {
