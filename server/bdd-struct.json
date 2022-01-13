@@ -5,9 +5,9 @@
       "username": "eriubfe",
       "password": "zehbfen",
       "email": "zejbferle",
-      "catégorie":[
+      "scores":[
         {
-          "cat1":[
+          "distancePays":[
             {
               "score":200,
               "date":"07/09/2022"
@@ -21,7 +21,7 @@
               "date":"07/09/2022"
             }
           ],
-          "cat2":[
+          "distanceVilles":[
             {
               "score":200,
               "date":"07/09/2022"
@@ -35,7 +35,7 @@
               "date":"07/09/2022"
             }
           ],
-          "cat3":[
+          "populationPays":[
             {
               "score":200,
               "date":"07/09/2022"
@@ -49,7 +49,7 @@
               "date":"07/09/2022"
             }
           ],
-          "cat4":[
+          "populationVilles":[
             {
               "score":200,
               "date":"07/09/2022"

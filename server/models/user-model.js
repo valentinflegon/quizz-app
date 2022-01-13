@@ -21,6 +21,24 @@ const userSchema = new Schema({
     validate: [isEmail, 'invalid email'],
     createIndexes: { unique: true }
   },
+  scores: {
+    distancePays: [
+      {
+        type: Number
+      }],
+    distanceVilles: [
+      {
+        type: Number
+      }],
+    populationPays: [
+      {
+        type: Number
+      }],
+    populationVilles: [
+      {
+        type: Number 
+      }]
+  }
 });
 
 userSchema.pre('save', async function save(next) {

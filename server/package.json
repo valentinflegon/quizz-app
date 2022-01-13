@@ -2,11 +2,11 @@
   "name": "quizz-app",
   "version": "1.0.0",
   "description": "Créer une application de quizz géographique",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon http://localhost:3002 src/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,12 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
+    "dotenv": "^11.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.2",
     "nodemon": "^2.0.15",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
     "validator": "^13.7.0"
   }
 }

@@ -108,6 +108,21 @@ deleteUser = async (req, res) => {
   }).catch(err => console.log(err))
 }
 
+deleteUserByUsername = async (req, res) => {
+  await User.findOneAndDelete({ username: req.params.username }, (err, user) => {
+    if (err) {
+      return res.status(400).json({ success: false, error: err });
+    }
+
+    if (!user) {
+      return res.status(404)
+        .json({ success: false, error: `User not found, delete user by username failed` })
+    }
+
+    return res.status(200).json({ success: true, data: user });
+  }).catch(err => console.log(err))
+}
+
 // Get User by Id
 getUserById = async (req, res) => {
   try {
@@ -117,7 +132,27 @@ getUserById = async (req, res) => {
       data: user
     });
   } catch (err) {
-    return { success: false, message: "User not found " + err };
+    return res.status(404).json({
+      success:false,
+      data: "User by id not found"
+    });
+  }
+}
+
+// Get User by Id
+getUserByUsername = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if(!user) return res.sendStatus(404).json({
+      success: false,
+      data: "User by username not found"
+    });
+    return res.status(200).json({
+      success: true,
+      data: user
+    });
+  } catch (err) {
+    return res.sendStatus(404);
   }
 }
 
@@ -163,11 +198,54 @@ logIn = async (req, res) => {
   }
 };
 
+// Add score to user
+addScore = async (req, res) => {
+  const body = req.body;
+
+  if (!body) {
+    return res.status(400).json({
+      success: false,
+      error: 'You must provide a body to update',
+    });
+  }
+
+  User.findOne({ _id: req.params.id }, (err, user) => {
+    if (err) {
+      return res.status(404).json({
+        err,
+        message: 'User not found!',
+      });
+    }
+    if (body.scores.distancePays) user.scores.distancePays.push(body.scores.distancePays);
+    if (body.scores.distanceVilles) user.scores.distanceVilles.push(body.scores.distanceVilles);
+    if (body.scores.populationPays) user.scores.populationPays.push(body.scores.populationPays);
+    if (body.scores.populationVilles) user.scores.populationVilles.push(body.scores.populationVilles);
+    user
+      .save()
+      .then(() => {
+        return res.status(200).json({
+          success: true,
+          id: user,
+          message: "User score updated!",
+        });
+      })
+      .catch(error => {
+        return res.status(404).json({
+          error,
+          message: 'User score not updated!',
+        });
+      })
+  })
+}
+
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  deleteUserByUsername,
   getUsers,
   getUserById,
+  getUserByUsername,
   logIn,
+  addScore,
 }

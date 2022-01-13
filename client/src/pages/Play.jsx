@@ -4,13 +4,12 @@ import GamemodChoice from '../components/GamemodChoice';
 
 const Play = () => {
   let { state } = useLocation();
-  console.log(state);
 
-  if(state){
+  if (state) {
     return (
       <div className='play-page'>
         <h1>Bienvenue {state.username} !</h1>
-        <GamemodChoice state={state}/>
+        <GamemodChoice state={state} />
       </div>
     );
   }
@@ -21,7 +20,7 @@ const Play = () => {
       </div>
     );
   }
-  
+
 };
 
 export default Play;
