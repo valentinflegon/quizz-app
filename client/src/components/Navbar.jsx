@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo.svg";
+import avatar from "../assets/avatar.png";
 import { NavLink } from "react-router-dom";
 import "../styles/components/_navbar.scss";
 import { useAppContext } from "../lib/contextLib";
@@ -126,7 +127,7 @@ const NavBar = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="avatar" src={avatar} />
                 </IconButton>
               </Tooltip>
               <Menu
