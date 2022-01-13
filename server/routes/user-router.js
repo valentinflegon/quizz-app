@@ -31,9 +31,10 @@ const userCtrl = require('../controllers/user-controller');
  *              email: toto@toto.fr
  */
 
-router.post('/create-user', userCtrl.createUser);
-router.put('/update-user/:id', userCtrl.updateUser);
-router.delete('/delete-user/:id', userCtrl.deleteUser);
+router.post('/user', userCtrl.createUser);
+router.put('/user/:id', userCtrl.updateUser);
+router.put('/add-score/:id', userCtrl.addScore);
+router.delete('/user/:id', userCtrl.deleteUser);
 
 /**
  * @openapi

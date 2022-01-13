@@ -2,7 +2,7 @@
 GET http://localhost:3002/api/users/
 
 ### get user by id API URL
-GET http://localhost:3002/api/user/61caee7f20a8bd234109db6
+GET http://localhost:3002/api/user/61e010da15e34cc5ec2116ff
 
 ### add user API URL
 POST http://localhost:3002/api/user/
@@ -15,11 +15,24 @@ content-type: application/json
 }
 
 ### update user API URL
-PUT http://localhost:3002/api/user/61cae7cbceef2d430a317399
+PUT http://localhost:3002/api/user/61e010da15e34cc5ec2116ff
 content-type: application/json
 
 {
 	"username": "TestUpdate"
+}
+
+### update user score API URL
+PUT http://localhost:3002/api/add-score/61e010da15e34cc5ec2116ff
+content-type: application/json
+
+{
+	"scores": {
+		"distancePays": 290,
+		"distanceVilles": 600,
+		"populationPays": 1000,
+		"populationVilles": 100
+	}
 }
 
 ### login user
@@ -32,4 +45,4 @@ Content-Type: application/json
 }
 
 ### remove a user
-DELETE http://localhost:3002/api/user/61cae7cbceef2d430a317399
+DELETE http://localhost:3002/api/user/61e01059d5e7074ef3e4d9fa
