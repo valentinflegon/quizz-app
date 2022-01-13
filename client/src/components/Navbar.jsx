@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import {
   AppBar,
@@ -11,36 +11,47 @@ import {
   Container,
   Avatar,
   Tooltip,
-  } from "@mui/material";
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import "../styles/components/_navbar.scss";
+import { useAppContext } from "../lib/contextLib";
 
-const pages = ["LeaderBoard"];
+// const pages = ["LeaderBoard"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-let isLogged = false;
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const isLogged = useAppContext();
+  const { userHasAuthenticated } = useAppContext();
 
   const handleOpenNavMenu = (event) => {
+    console.log("Clicked on open navMenu");
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
+    console.log("Clicked on open userMenu");
     setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
+    console.log("Clicked on close nav menu");
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
+    console.log("Clicked on close user menu");
     setAnchorElUser(null);
   };
 
-  return isLogged ? ( //isLogged true
+  const handleLogout = () => {
+    console.log("Logout clicked");
+    userHasAuthenticated(false);
+  };
+
+  return isLogged.isAuthenticated ? (
     <div className='navbar1'>
       <AppBar className='navbar' position="static">
         <Container className="navbar" maxWidth="xl">
@@ -93,7 +104,7 @@ const NavBar = () => {
                   </NavLink>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <NavLink className="menu-logout" to=''>
+                  <NavLink className="menu-logout" to='/'>
                     <p>Déconnexion</p>
                   </NavLink>
                 </MenuItem>
@@ -141,11 +152,18 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem key={settings[0]} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{settings[0]}</Typography>
+                </MenuItem>
+                <MenuItem key={settings[1]} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{settings[1]}</Typography>
+                </MenuItem>
+                <MenuItem key={settings[2]} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{settings[2]}</Typography>
+                </MenuItem>
+                <MenuItem key={settings[3]} onClick={handleLogout}>
+                  <Typography textAlign="center">{settings[3]}</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           </Toolbar>

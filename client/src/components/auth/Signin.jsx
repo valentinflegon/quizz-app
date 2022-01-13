@@ -46,7 +46,7 @@ const Signin = () => {
       email: data.get('email'),
       password: data.get('password'),
     };
-    axios.post('http://localhost:3002/api/create-user', tmp)
+    axios.post('http://localhost:3002/api/user', tmp)
       .then((response) => {
         console.log(response);
         message = response.data.message;
