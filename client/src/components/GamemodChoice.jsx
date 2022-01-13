@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  NavLink, 
+import {
+  NavLink,
   useLocation,
-  } from 'react-router-dom';
+} from 'react-router-dom';
 
 const GamemodChoice = () => {
   let { state } = useLocation();
-  console.log(state, "from game mod choice");
-
   const data = require('./paysGood.json');
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -32,13 +30,13 @@ const GamemodChoice = () => {
       {state && <h1>wallah le game mod choice a bien capté que c'etait {state.username} le boss !</h1>}
       <div className='row mt-3 form-card'>
         <h5>Jouer au mode Distance</h5>
-        <div className='col'><NavLink exact to="/play" state={{mode: "Distance entre pays"}}>Distance entre pays</NavLink></div>
-        <div className='col'><NavLink exact to="/play" state={{mode: "Distance entre villes"}}>Distance entre villes</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{ mode: "Distance entre pays" }}>Distance entre pays</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{ mode: "Distance entre villes" }}>Distance entre villes</NavLink></div>
       </div>
       <div className='row mt-3 form-card'>
         <h5>Jouer au mode Population</h5>
-        <div className='col'><NavLink exact to="/play" state={{mode: "Population de pays"}}>Population de pays</NavLink></div>
-        <div className='col'><NavLink exact to="/play" state={{mode: "Population de villes"}}>Population de villes</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{ mode: "Population de pays" }}>Population de pays</NavLink></div>
+        <div className='col'><NavLink exact to="/play" state={{ mode: "Population de villes" }}>Population de villes</NavLink></div>
       </div>
       {countries &&
         <NavLink exact to="/countryDistances" state={{ from: [countries[0], countries[1]] }}>jouer au mode distance country</NavLink>

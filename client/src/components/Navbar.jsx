@@ -103,15 +103,8 @@ const NavBar = () => {
                     <p>Leaderboard</p>
                   </NavLink>
                 </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <NavLink className="menu-logout" to='/'>
-                    <p>Déconnexion</p>
-                  </NavLink>
-                </MenuItem>
-
               </Menu>
             </Box>
-
             <Typography
               variant="h6"
               noWrap

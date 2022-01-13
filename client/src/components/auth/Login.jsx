@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   Avatar,
-  Button,
+  // Button,
   CssBaseline,
   TextField,
   Grid,
@@ -14,7 +14,10 @@ import { blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate, NavLink } from 'react-router-dom';
+import LoaderButton from "../LoaderButton";
 import { useAppContext } from "../../lib/contextLib";
+import { onError } from "../../lib/errorLib";
+import { useFormFields } from "../../lib/hooksLib";
 
 function Copyright(props) {
   return (
@@ -31,34 +34,47 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+
 const Login = () => {
   const { userHasAuthenticated } = useAppContext();
+  const [isLoading, setIsLoading] = useState(false);
+  const [fields, handleFieldChange] = useFormFields({
+    username: "",
+    password: ""
+  });
   let navigate = useNavigate();
+
+  function validateForm() {
+    return fields.username.length > 0 && fields.password.length > 0;
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true)
     const data = new FormData(event.currentTarget);
     let tmp = {
       username: data.get('username'),
       password: data.get('password'),
+    };
+    try {
+      axios.post('http://localhost:3002/api/login', tmp)
+        .then((response) => {
+          const { data } = response;
+          // setConnexionData(data);
+          console.log(data, 'from retour api');
+          if (data.success) {
+            console.log(data, "on navigate lol");
+            userHasAuthenticated(true);
+            navigate("/play", { replace: true, state: { username: tmp.username } });
+          }
+          else {
+            alert("Logged in fail, make sure to have an account!");
+          }
+        });
+    } catch (e) {
+      onError(e);
+      setIsLoading(false);
     }
-
-
-    axios.post('http://localhost:3002/api/login', tmp)
-      .then((response) => {
-        const { data } = response;
-        // setConnexionData(data);
-        console.log(data, 'from retour api');
-        if (data.success) {
-          console.log(data, "on navigate lol");
-          alert("Logged in");
-          userHasAuthenticated(true);
-          navigate("/play", { replace: true, state: { username: tmp.username } });
-        }
-        else{
-          alert("Logged in fail, make sure to have an account!");
-        }
-      });
     // eslint-disable-next-line no-console
     console.log({
       username: data.get('username'),
@@ -91,6 +107,8 @@ const Login = () => {
               fullWidth
               id="username"
               label="Nom d'utilisateur"
+              value={fields.username}
+              onChange={handleFieldChange}
               name="username"
               autoComplete="username"
               autoFocus
@@ -102,17 +120,21 @@ const Login = () => {
               name="password"
               label="Mot de passe"
               type="password"
+              value={fields.password}
+              onChange={handleFieldChange}
               id="password"
               autoComplete="current-password"
             />
-            <Button
+            <LoaderButton
               type="submit"
               fullWidth
+              isLoading={isLoading}
+              disabled={!validateForm()}
               variant="contained"
               sx={{ mt: 3, mb: 2, bgcolor: blue[500] }}
             >
               S'enregistrer
-            </Button>
+            </LoaderButton>
             <Grid container alignItems="center"
               justifyContent="center">
               <Grid item>

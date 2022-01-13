@@ -8,7 +8,7 @@ import {
   Box,
   Typography,
   Container,
-  } from '@mui/material';
+} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { blue } from '@mui/material/colors';
@@ -62,7 +62,7 @@ const Signin = () => {
         else {
           console.log("on change de page");
           setSuccess(null);
-          navigate("/play", { replace: true, state: { isLogged:true, username: tmp.username } }); 
+          navigate("/", { replace: true, state: { isLogged: true, username: tmp.username } });
         }
       })
       .catch((error) => {
@@ -144,14 +144,14 @@ const Signin = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 , bgcolor: blue[500]}}
+              sx={{ mt: 3, mb: 2, bgcolor: blue[500] }}
             >
               S'inscrire
             </Button>
             <Grid container justifyContent="center">
-                <NavLink exact to="/login">
-                  Vous avez déjà un compte? S'enregistrer
-                </NavLink>
+              <NavLink exact to="/login">
+                Vous avez déjà un compte? S'enregistrer
+              </NavLink>
             </Grid>
           </Box>
         </Box>
