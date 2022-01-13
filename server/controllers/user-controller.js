@@ -108,10 +108,45 @@ deleteUser = async (req, res) => {
   }).catch(err => console.log(err))
 }
 
+deleteUserByUsername = async (req, res) => {
+  await User.findOneAndDelete({ username: req.params.username }, (err, user) => {
+    if (err) {
+      return res.status(400).json({ success: false, error: err });
+    }
+
+    if (!user) {
+      return res.status(404)
+        .json({ success: false, error: `User not found, delete user by username failed` })
+    }
+
+    return res.status(200).json({ success: true, data: user });
+  }).catch(err => console.log(err))
+}
+
 // Get User by Id
 getUserById = async (req, res) => {
   try {
     const user = await User.findById({ _id: req.params.id });
+    return res.status(200).json({
+      success: true,
+      data: user
+    });
+  } catch (err) {
+    return res.status(404).json({
+      success:false,
+      data: "User by id not found"
+    });
+  }
+}
+
+// Get User by Id
+getUserByUsername = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if(!user) return res.sendStatus(404).json({
+      success: false,
+      data: "User by username not found"
+    });
     return res.status(200).json({
       success: true,
       data: user
@@ -207,8 +242,10 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  deleteUserByUsername,
   getUsers,
   getUserById,
+  getUserByUsername,
   logIn,
   addScore,
 }

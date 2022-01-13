@@ -35,6 +35,7 @@ router.post('/user', userCtrl.createUser);
 router.put('/user/:id', userCtrl.updateUser);
 router.put('/add-score/:id', userCtrl.addScore);
 router.delete('/user/:id', userCtrl.deleteUser);
+router.delete('/user-username/:username', userCtrl.deleteUserByUsername);
 
 /**
  * @openapi
@@ -60,6 +61,7 @@ router.delete('/user/:id', userCtrl.deleteUser);
  *              description: The user was not found
  */
 router.get('/user/:id', userCtrl.getUserById);
+router.get('/user-username/:username', userCtrl.getUserByUsername);
 
 /**
  * @openapi
