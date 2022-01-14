@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate, NavLink } from 'react-router-dom';
 import LoaderButton from "../LoaderButton";
-import { useAppContext } from "../../lib/contextLib";
+import { useAppContext, useUserContext } from "../../lib/contextLib";
 import { onError } from "../../lib/errorLib";
 import { useFormFields } from "../../lib/hooksLib";
 
@@ -37,6 +37,7 @@ const theme = createTheme();
 
 const Login = () => {
   const { userHasAuthenticated } = useAppContext();
+  const { setUser } = useUserContext();
   const [isLoading, setIsLoading] = useState(false);
   const [fields, handleFieldChange] = useFormFields({
     username: "",
@@ -60,20 +61,21 @@ const Login = () => {
       axios.post('http://localhost:3002/api/login', tmp)
         .then((response) => {
           const { data } = response;
-          // setConnexionData(data);
-          console.log(data, 'from retour api');
           if (data.success) {
-            console.log(data, "on navigate lol");
             userHasAuthenticated(true);
+            setUser(data.data);
             navigate("/play", { replace: true, state: { username: tmp.username } });
+            console.log("ici")
           }
           else {
-            alert("Logged in fail, make sure to have an account!");
+            alert("Email or password incorrect, make sure to have an account!");
+            setIsLoading(false);
           }
         });
     } catch (e) {
-      onError(e);
+      console.log("ici")
       setIsLoading(false);
+      onError(e);
     }
     // eslint-disable-next-line no-console
     console.log({

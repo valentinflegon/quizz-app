@@ -15,16 +15,17 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/avatar.png";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../styles/components/_navbar.scss";
 import { useAppContext } from "../lib/contextLib";
 
 // const pages = ["LeaderBoard"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Settings", "Logout"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
   const isLogged = useAppContext();
   const { userHasAuthenticated } = useAppContext();
 
@@ -47,9 +48,24 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  const handleProfile = () => {
+    setAnchorElUser(null);
+    navigate("/profile");
+  }
+
+  const handleSettings = () => {
+    console.log("Logout clicked");
+    setAnchorElUser(null);
+    navigate("/settings");
+  };
+
+
   const handleLogout = () => {
     console.log("Logout clicked");
     userHasAuthenticated(false);
+    setAnchorElUser(null);
+    alert("Merci pour votre visite, aurevoir!");
+    navigate("/");
   };
 
   return isLogged.isAuthenticated ? (
@@ -146,13 +162,13 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key={settings[0]} onClick={handleCloseNavMenu}>
+                <MenuItem key={settings[0]} onClick={handleProfile}>
                   <Typography textAlign="center">{settings[0]}</Typography>
                 </MenuItem>
                 <MenuItem key={settings[1]} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{settings[1]}</Typography>
                 </MenuItem>
-                <MenuItem key={settings[2]} onClick={handleCloseNavMenu}>
+                <MenuItem key={settings[2]} onClick={handleSettings}>
                   <Typography textAlign="center">{settings[2]}</Typography>
                 </MenuItem>
                 <MenuItem key={settings[3]} onClick={handleLogout}>
