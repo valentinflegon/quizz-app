@@ -10,3 +10,4 @@ export { default as DistCities } from './Game/DistCities';
 export { default as DistCountries } from './Game/DistCountries';
 export { default as PopCities } from './Game/PopCities';
 export { default as PopCountries } from './Game/PopCountries';
+export { default as Profile } from './Profile';

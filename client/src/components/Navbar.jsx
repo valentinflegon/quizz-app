@@ -25,6 +25,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
   const isLogged = useAppContext();
   const { userHasAuthenticated } = useAppContext();
 
@@ -147,7 +148,9 @@ const NavBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem key={settings[0]} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{settings[0]}</Typography>
+                  <NavLink exact to='/profile'>
+                    <Typography textAlign="center">{settings[0]}</Typography>
+                  </NavLink>
                 </MenuItem>
                 <MenuItem key={settings[1]} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{settings[1]}</Typography>
