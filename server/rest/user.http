@@ -18,11 +18,11 @@ content-type: application/json
 }
 
 ### update user API URL
-PUT http://localhost:3002/api/user/61e010da15e34cc5ec2116ff
+PUT http://localhost:3002/api/user/61e14c8596647ac5ef87ca50
 content-type: application/json
 
 {
-	"username": "TestUpdate"
+	"password": "TestUpdatePassword"
 }
 
 ### update user score API URL
@@ -38,17 +38,25 @@ content-type: application/json
 	}
 }
 
+### compare a user password API URL
+PUT http://localhost:3002/api/user/compare-password/61e1af183652f748609c9746
+content-type: application/json
+
+{
+	"password": "kiki123"
+}
+
 ### login user
 POST http://localhost:3002/api/login
 Content-Type: application/json
 
 {
-	"username": "test",
-	"password": "00000"
+	"username": "kirsan",
+	"password": "kiki"
 }
 
 ### remove a user by id 
-DELETE http://localhost:3002/api/user/61e01059d5e7074ef3e4d9fa
+DELETE http://localhost:3002/api/user/61e14b21342763fa8af1a614
 
 ### remove a user by username 
-DELETE http://localhost:3002/api/user-username/Test
+DELETE http://localhost:3002/api/user-username/koko

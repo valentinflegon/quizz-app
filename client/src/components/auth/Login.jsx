@@ -61,20 +61,21 @@ const Login = () => {
       axios.post('http://localhost:3002/api/login', tmp)
         .then((response) => {
           const { data } = response;
-          // setConnexionData(data);
-          console.log(data.data, 'from retour api');
           if (data.success) {
             userHasAuthenticated(true);
             setUser(data.data);
             navigate("/play", { replace: true, state: { username: tmp.username } });
+            console.log("ici")
           }
           else {
-            alert("Logged in fail, make sure to have an account!");
+            alert("Email or password incorrect, make sure to have an account!");
+            setIsLoading(false);
           }
         });
     } catch (e) {
-      onError(e);
+      console.log("ici")
       setIsLoading(false);
+      onError(e);
     }
     // eslint-disable-next-line no-console
     console.log({

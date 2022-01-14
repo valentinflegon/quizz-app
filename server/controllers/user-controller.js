@@ -53,14 +53,61 @@ createUser = async (req, res) => {
     });
 }
 
+comparePassword = async (req, res) => {
+  const { password } = req.body;
+  const user = await User.findOne({ _id: req.params.id });
+  if (!user) return res.status(404).json({
+    success: false,
+    message: "User was not found"
+  });
+  else {
+    bcrypt.compare(password, user.password).then(
+      (response) => {
+        if (!response) return res.status(404).json({
+          success: false,
+          message: "Response from bcrypt compare failed"
+        });
+        else {
+          return res.status(200).json({
+            success: true,
+            data: true
+          });
+        }
+      }
+    );
+  }
+}
+
 updateUser = async (req, res) => {
   const body = req.body;
-
   if (!body) {
     return res.status(400).json({
       success: false,
       error: 'You must provide a body to update',
     });
+    User.findOne({ _id: req.params.id }, (err, user) => {
+      if (err) {
+        return res.status(404).json({
+          err,
+          message: 'User not found!',
+        });
+      }
+      if (body.username) user.username = body.username;
+      if (body.password) user.password = body.password;
+      if (body.email) user.email = body.email;
+      user
+      return res.status(200).json({
+        success: true,
+        id: user,
+        message: 'User updated!',
+      });
+    })
+      .catch(error => {
+        return res.status(404).json({
+          error,
+          message: 'User not updated!',
+        });
+      });
   }
 
   User.findOne({ _id: req.params.id }, (err, user) => {
@@ -73,6 +120,7 @@ updateUser = async (req, res) => {
     if (body.username) user.username = body.username;
     if (body.password) user.password = body.password;
     if (body.email) user.email = body.email;
+
     user
       .save()
       .then(() => {
@@ -184,7 +232,7 @@ logIn = async (req, res) => {
   else {
     bcrypt.compare(password, user.password).then(
       (response) => {
-        if (!response) return res.status(404).json({
+        if (!response) return res.status(200).json({
           success: false,
           message: "response from bcrypt compare failed"
         });
@@ -250,4 +298,5 @@ module.exports = {
   getUserByUsername,
   logIn,
   addScore,
+  comparePassword,
 }

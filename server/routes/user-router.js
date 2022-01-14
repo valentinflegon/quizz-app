@@ -136,6 +136,8 @@ router.post('/login', userCtrl.logIn);
  */
 router.put('/user/:id', userCtrl.updateUser);
 
+router.put('/user/compare-password/:id', userCtrl.comparePassword);
+
 /**
  * @openapi
  * /api/add-score/{id}:

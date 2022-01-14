@@ -19,6 +19,7 @@ import {
   DistCountries,
   Leaderboard,
   Profile,
+  Settings,
 } from '../pages';
 import {
   Navbar,
@@ -41,6 +42,7 @@ const App = () => {
               <Route exact path="/signin" element={<SignIn />} />
               <Route exact path="/play" element={<Play />} />
               <Route exact path="/profile" element={<Profile />} />
+              <Route exact path="/settings" element={<Settings />} />
               <Route exact path="/countryDistances" element={<CountryDist />} />
               <Route exact path="/leaderboard" element={<Leaderboard />} />
               <Route exact path="/about-us" element={<AboutUs />} />
