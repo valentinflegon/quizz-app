@@ -36,9 +36,9 @@ const userSchema = new Schema({
       }],
     populationVilles: [
       {
-        type: Number 
+        type: Number
       }]
-  }
+    }
 });
 
 userSchema.pre('save', async function save(next) {
