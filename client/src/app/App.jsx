@@ -12,7 +12,6 @@ import {
   Play,
   NotFound,
   AboutUs,
-  TermsConditions,
   PopCities,
   PopCountries,
   DistCities,
@@ -46,7 +45,6 @@ const App = () => {
               <Route exact path="/countryDistances" element={<CountryDist />} />
               <Route exact path="/leaderboard" element={<Leaderboard />} />
               <Route exact path="/about-us" element={<AboutUs />} />
-              <Route exact path="/terms-conditions" element={<TermsConditions />} />
               <Route exact path="/dist-cities" element={<DistCities />} />
               <Route exact path="/dist-countries" element={<DistCountries />} />
               <Route exact path="/pop-cities" element={<PopCities />} />

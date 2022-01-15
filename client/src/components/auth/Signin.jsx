@@ -155,7 +155,7 @@ const Signin = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 3, mb: 3 }} />
+        {/* <Copyright sx={{ mt: 3, mb: 3 }} /> */}
       </Container>
     </ThemeProvider>
   );

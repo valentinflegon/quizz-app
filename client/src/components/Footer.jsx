@@ -15,9 +15,6 @@ const Footer = () => {
           <NavLink to='/about-us'>À propos</NavLink>
         </div>
         <div>
-          <NavLink to='/terms-conditions'>Termes & Conditions </NavLink>
-        </div>
-        <div>
           <NavLink exact to="/">
             @GEOQUIZZ
           </NavLink>

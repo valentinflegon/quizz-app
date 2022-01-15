@@ -21,7 +21,7 @@ const DistCities = () => {
   let data = require("../../components/cities.json");
 
   const [list, setList] = React.useState([]);
-  // const [open, setOpen] = React.useState(true);
+  const [listCopy, setListCopy] = React.useState([]);
   const [cities, setCities] = useState(null);
   const [answer, setAnswer] = React.useState("");
   const [sumScore, setSumScore] = React.useState(0);
@@ -37,7 +37,7 @@ const DistCities = () => {
     let citie1 = cities[0];
     let citie2 = cities[1];
     let distance;
-   
+
     axios
       .get(
         "https://fr.distance24.org/route.json?stops=" +
@@ -52,8 +52,8 @@ const DistCities = () => {
           "resultat distance entre " + cities[0] + " " + cities[1]
         );
 
-        let accuracyValue = accuracy(answer,distance);
-        accuracyValue = accuracyValue.toFixed(3)
+        let accuracyValue = accuracy(answer, distance);
+        accuracyValue = accuracyValue.toFixed(3);
         let scoreQuestion = scoreFunction(accuracyValue);
         setSumScore(sumScore + scoreQuestion);
 
@@ -76,8 +76,8 @@ const DistCities = () => {
     return Math.ceil(accuracy);
   }
 
-  function accuracy(answer,distance) {
-    let realAnswer = distance; 
+  function accuracy(answer, distance) {
+    let realAnswer = distance;
     accuracy = 100 - (Math.abs(answer - realAnswer) * 100) / realAnswer;
     if (accuracy < 0) return 0;
     else return accuracy;
@@ -88,17 +88,29 @@ const DistCities = () => {
   }
 
   function loadCities() {
+    if (data.length <= 3) { 
+      // A MODIFIER
+      data = data.concat(listCopy);
+      setListCopy(null);
+      
+
+    }
     const nb = getRandomInt(data.length);
+
     const citie1 = data[nb];
-    console.log(data)
+    const c1 = citie1.toString(2);
     data.splice(nb, 1);
 
     const nb2 = getRandomInt(data.length);
     const citie2 = data[nb2];
+    const c2 = citie2.toString(2);
     data.splice(nb2, 1);
+
+    const newList = listCopy.concat(c1, c2);
+
     setCities([citie1, citie2]);
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
-
+    setListCopy(newList);
   }
 
   function newGame() {
@@ -106,7 +118,6 @@ const DistCities = () => {
     const newList = [];
     setSumScore(0);
     setList(newList);
-    
   }
 
   if (currentQuestion == 0) {

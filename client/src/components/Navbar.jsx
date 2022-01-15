@@ -20,7 +20,7 @@ import "../styles/components/_navbar.scss";
 import { useAppContext } from "../lib/contextLib";
 
 // const pages = ["LeaderBoard"];
-const settings = ["Profile", "Account", "Settings", "Logout"];
+const settings = ["Profil", "Réglages", "Se déconnecter"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -165,14 +165,11 @@ const NavBar = () => {
                 <MenuItem key={settings[0]} onClick={handleProfile}>
                   <Typography textAlign="center">{settings[0]}</Typography>
                 </MenuItem>
-                <MenuItem key={settings[1]} onClick={handleCloseNavMenu}>
+                <MenuItem key={settings[1]} onClick={handleSettings}>
                   <Typography textAlign="center">{settings[1]}</Typography>
                 </MenuItem>
-                <MenuItem key={settings[2]} onClick={handleSettings}>
+                <MenuItem key={settings[2]} onClick={handleLogout}>
                   <Typography textAlign="center">{settings[2]}</Typography>
-                </MenuItem>
-                <MenuItem key={settings[3]} onClick={handleLogout}>
-                  <Typography textAlign="center">{settings[3]}</Typography>
                 </MenuItem>
               </Menu>
             </Box>

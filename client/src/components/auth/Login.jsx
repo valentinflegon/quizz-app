@@ -64,7 +64,7 @@ const Login = () => {
           if (data.success) {
             userHasAuthenticated(true);
             setUser(data.data);
-            navigate("/play", { replace: true, state: { username: tmp.username } });
+            navigate("/", { replace: true, state: { username: tmp.username } });
             console.log("ici")
           }
           else {
@@ -147,7 +147,7 @@ const Login = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 3, mb: 3 }} />
+        {/* <Copyright sx={{ mt: 3, mb: 3 }} /> */}
       </Container>
     </ThemeProvider>
   );
