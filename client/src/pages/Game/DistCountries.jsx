@@ -119,7 +119,6 @@ const DistCountries = () => {
   }
 
   function newGame() {
-    sendScore();
     setCurrentQuestion([parseInt(0) + 1]);
     const newList = [];
     setSumScore(0);
@@ -140,6 +139,7 @@ const DistCountries = () => {
           axios.put(URL, score).then((response) => {
             const { data } = response;
             if (data.success) {
+              alert("Votre score bien été ajouté ")
             } else {
               alert("Error");
             }
@@ -147,6 +147,8 @@ const DistCountries = () => {
         } catch (e) {
           console.log("erreur : ", e);
         }
+      }else{
+        alert("Vous devez vous inscrire pour enrgistrer vos scores")
       }
     } catch (e) {}
   }
@@ -220,11 +222,12 @@ const DistCountries = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <div className="buttonEnd">
-          <Button onClick={(loadCountries, newGame)} variant="contained">
+        <div className="saveScore"><Button  onClick={(sendScore)} variant="contained">
+            Enregistrer le score
+          </Button></div>
+        <div><Button onClick={(loadCountries, newGame)} variant="contained">
             Recommencer
-          </Button>
-        </div>
+          </Button></div>
       </>
     );
   }
