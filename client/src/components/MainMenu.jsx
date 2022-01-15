@@ -29,7 +29,7 @@ const bull = (
 const MainMenu = () => {
   return (
     <>
-      <h2 className='cate-title'>Quizz des Distances</h2>
+      <h2 className='cate-title'>Quiz des Distances</h2>
       <div className='row'  >
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -56,7 +56,7 @@ const MainMenu = () => {
           </Grid>
         </Grid>
       </div>
-      <h2 className='cate-title'>Quizz des Populations</h2>
+      <h2 className='cate-title'>Quiz des Populations</h2>
       <div className='row'  >
         <Grid container spacing={2}>
           <Grid item xs={6}>
