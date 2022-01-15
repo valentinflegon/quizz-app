@@ -13,11 +13,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
+import { blue } from '@mui/material/colors';
+import LoaderButton from "../../components/LoaderButton";
 
 const NUMBERQUESTION = 10;
 
 const DistCities = () => {
   let { state } = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
   let data = require("../../components/cities.json");
 
   const [list, setList] = React.useState([]);
@@ -37,39 +40,40 @@ const DistCities = () => {
     let citie1 = cities[0];
     let citie2 = cities[1];
     let distance;
+    setIsLoading(true)
+    try {
+      axios.get("https://fr.distance24.org/route.json?stops=" + cities[0] + "|" + cities[1])
+        .then((resp) => {
+          console.log("Response from externe api" + resp);
+          distance = resp.data.distance;
+          console.log(
+            resp.data.distance,
+            "resultat distance entre " + cities[0] + " " + cities[1]
+          );
 
-    axios
-      .get(
-        "https://fr.distance24.org/route.json?stops=" +
-          cities[0] +
-          "|" +
-          cities[1]
-      )
-      .then((resp) => {
-        distance = resp.data.distance;
-        console.log(
-          resp.data.distance,
-          "resultat distance entre " + cities[0] + " " + cities[1]
-        );
+          let accuracyValue = accuracy(answer, distance);
+          accuracyValue = accuracyValue.toFixed(3);
+          let scoreQuestion = scoreFunction(accuracyValue);
+          setSumScore(sumScore + scoreQuestion);
 
-        let accuracyValue = accuracy(answer, distance);
-        accuracyValue = accuracyValue.toFixed(3);
-        let scoreQuestion = scoreFunction(accuracyValue);
-        setSumScore(sumScore + scoreQuestion);
-
-        const newList = list.concat({
-          distance,
-          accuracyValue,
-          scoreQuestion,
-          citie1,
-          citie2,
-          currentQuestion,
-          answer,
+          const newList = list.concat({
+            distance,
+            accuracyValue,
+            scoreQuestion,
+            citie1,
+            citie2,
+            currentQuestion,
+            answer,
+          });
+          setList(newList);
+          console.log(list);
+          loadCities();
+          setIsLoading(false);
         });
-        setList(newList);
-        console.log(list);
-        loadCities();
-      });
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
   }
 
   function scoreFunction(accuracy) {
@@ -88,11 +92,11 @@ const DistCities = () => {
   }
 
   function loadCities() {
-    if (data.length <= 3) { 
+    if (data.length <= 3) {
       // A MODIFIER
       data = data.concat(listCopy);
       setListCopy(null);
-      
+
 
     }
     const nb = getRandomInt(data.length);
@@ -219,12 +223,22 @@ const DistCities = () => {
             onChange={handleChange}
             value={answer}
           />
-
           <div className="button">
+            <LoaderButton
+              type="submit"
+              onClick={handleAdd}
+              isLoading={isLoading}
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: blue[500] }}
+            >
+              Next
+            </LoaderButton>
+          </div>
+          {/* <div className="button">
             <Button onClick={handleAdd} variant="contained">
               Next
             </Button>
-          </div>
+          </div> */}
         </Card>
       </>
     );
