@@ -53,7 +53,6 @@ const DistCities = () => {
             cities[1]
         )
         .then((resp) => {
-          console.log("Response from externe api" + resp);
           distance = resp.data.distance;
 
           let accuracyValue = accuracy(answer, distance);
@@ -154,7 +153,7 @@ const DistCities = () => {
   if (currentQuestion == 0) {
     return (
       <>
-        <h1>Quizz Distance Villes</h1>
+        <h1>Quiz Distance Villes</h1>
         <Card className="startCard">
           <div className="button">
             <Button onClick={loadCities} variant="contained">
@@ -168,7 +167,7 @@ const DistCities = () => {
   if (currentQuestion == NUMBERQUESTION + 1) {
     return (
       <>
-        <h1>Quizz Distance Villes</h1>
+        <h1>Quiz Distance Villes</h1>
         <TableContainer className="tab" component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
@@ -233,7 +232,7 @@ const DistCities = () => {
   else
     return (
       <>
-        <h1>Quizz Distance Villes</h1>
+        <h1>Quiz Distance Villes</h1>
 
         <Card className="questionCard">
           <h2>
