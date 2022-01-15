@@ -13,12 +13,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
-import { blue } from '@mui/material/colors';
+import { blue } from "@mui/material/colors";
 import LoaderButton from "../../components/LoaderButton";
+import { useUserContext } from "../../lib/contextLib";
 
 const NUMBERQUESTION = 10;
 
 const DistCities = () => {
+  const user = useUserContext();
+  const { setUser } = useUserContext();
   let { state } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   let data = require("../../components/cities.json");
@@ -40,16 +43,18 @@ const DistCities = () => {
     let citie1 = cities[0];
     let citie2 = cities[1];
     let distance;
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      axios.get("https://fr.distance24.org/route.json?stops=" + cities[0] + "|" + cities[1])
+      axios
+        .get(
+          "https://fr.distance24.org/route.json?stops=" +
+            cities[0] +
+            "|" +
+            cities[1]
+        )
         .then((resp) => {
           console.log("Response from externe api" + resp);
           distance = resp.data.distance;
-          console.log(
-            resp.data.distance,
-            "resultat distance entre " + cities[0] + " " + cities[1]
-          );
 
           let accuracyValue = accuracy(answer, distance);
           accuracyValue = accuracyValue.toFixed(3);
@@ -66,13 +71,11 @@ const DistCities = () => {
             answer,
           });
           setList(newList);
-          console.log(list);
           loadCities();
           setIsLoading(false);
         });
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
     }
   }
 
@@ -96,8 +99,6 @@ const DistCities = () => {
       // A MODIFIER
       data = data.concat(listCopy);
       setListCopy(null);
-
-
     }
     const nb = getRandomInt(data.length);
 
@@ -118,10 +119,36 @@ const DistCities = () => {
   }
 
   function newGame() {
+    sendScore();
     setCurrentQuestion([parseInt(0) + 1]);
     const newList = [];
     setSumScore(0);
     setList(newList);
+  }
+
+  function sendScore() {
+    try {
+      if (user.user._id != null) {
+        const score = 
+        {
+          "scores": {
+            "distanceVilles": sumScore,
+          }
+        }
+        try {
+          const URL = "http://localhost:3002/api/add-score/" + user.user._id;
+          axios.put(URL, score).then((response) => {
+            const { data } = response;
+            if (data.success) {
+            } else {
+              alert("Error");
+            }
+          });
+        } catch (e) {
+          console.log("erreur : ", e);
+        }
+      }
+    } catch (e) {}
   }
 
   if (currentQuestion == 0) {

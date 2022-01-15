@@ -31,10 +31,10 @@ content-type: application/json
 
 {
 	"scores": {
-		"distancePays": 20,
-		"distanceVilles": 600,
-		"populationPays": 1000,
-		"populationVilles": 100
+		"distancePays": 10,
+		"distanceVilles": 10,
+		"populationPays": 10,
+		"populationVilles": 0
 	}
 }
 
