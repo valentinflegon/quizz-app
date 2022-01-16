@@ -27,7 +27,8 @@ Pour conclure cette partie, nous pouvons annoncer que nous nous sommes dirigés 
 
 ## APIs
 Dans ce projet, nous allons utiliser deux API tierces.
-\subsection{DISTANCE API}
+
+### DISTANCE API
 
 La première est une API qui permet de calculer les distances entre des lieux.
 Son nom est DISTANCE API, elle retourne un json avec de nombreuses informations dont la distance.
@@ -36,10 +37,8 @@ Entre deux villes par exemple Bordeaux-Marseille \url{https://fr.distance24.org/
  cela donne 506km. \\
 
 
-\subsection{POPULATION API}
+### POPULATION API
 
-
-API 2: 
 Population par ville/pays \\
 L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous) de récupérer certaines informations à propos d'une ville ou d'un pays, contenant la population. Néanmoins, les populations ne sont pas forcément les plus récentes enregistrées par les relevés internationaux.\\
 \\
