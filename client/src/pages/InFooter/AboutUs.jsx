@@ -1,7 +1,6 @@
 import React from "react";
 import "../../styles/_aboutUs.scss";
-import { BoxProps } from "@mui/material/Box";
-import { Paper, Typography, Grid, Box, Divider, Link } from "@mui/material";
+import { Typography, Box, Divider, Link } from "@mui/material";
 
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -107,6 +106,7 @@ const AboutUs = () => {
             </Link>
           </Typography>
           <Typography style={{}}>Développeur</Typography>
+          <Divider className="divider divider-kirsan" />
           <Typography className="typography-activities" variant="overline">
             Aimer faire la fête
           </Typography>
@@ -125,6 +125,7 @@ const AboutUs = () => {
             </Link>
           </Typography>
           <Typography style={{}}>Développeur</Typography>
+          <Divider className="divider divider-valentin" />
           <Typography className="typography-activities" variant="overline">
             Aimer faire bronzette
           </Typography>
@@ -143,110 +144,12 @@ const AboutUs = () => {
             </Link>
           </Typography>
           <Typography style={{}}>Développeur</Typography>
+          <Divider className="divider divider-louis" />
           <Typography className="typography-activities" variant="overline">
             Aimer jouer aux cookies
           </Typography>
         </Item>
       </Box>
-
-      {/* <Box sx={{ "& > :not(style)": { m: 1 } }}>
-        <Grid container align="center">
-          <Grid xs={4}>
-            <Paper
-              className="paper"
-              style={{ borderRadius: "10%" }}
-              elevation="10"
-            >
-              <Typography variant="body1" style={{ fontWeight: "bold" }}>
-                Kirsan Geoffroy
-                <Link href="https://github.com/Kirsan98" target="_blank">
-                  <GitHubIcon className="icon icon-kirsan github-icon-kirsan" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/kirsan-geoffroy-2a269a221/"
-                  target="_blank"
-                >
-                  <LinkedInIcon className="icon icon-kirsan linkedin-icon-kirsan" />
-                </Link>
-              </Typography>
-              <Typography style={{ marginRight: "10%" }}>
-                Développeur
-              </Typography>
-              <Divider className="divider divider-kirsan" />
-              <Typography
-                className="typography-activities"
-                variant="overline"
-                style={{ marginRight: "2%" }}
-              >
-                Aimer faire la fête
-              </Typography>
-            </Paper>
-          </Grid>
-
-          <Grid xs={4}>
-            <Paper
-              className="paper"
-              elevation="10"
-              style={{ borderRadius: "10px" }}
-            >
-              <Typography style={{ fontWeight: "bold" }}>
-                Valentin Flegon
-                <Link href="https://github.com/valentinflegon" target="_blank">
-                  <GitHubIcon className="icon icon-valentin github-icon-valentin" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/valentin-flegon/"
-                  target="_blank"
-                >
-                  <LinkedInIcon className="icon icon-valentin linkedin-icon-valentin" />
-                </Link>
-              </Typography>
-              <Typography style={{ marginRight: "190px" }}>
-                Développeur
-              </Typography>
-              <Divider className="divider divider-valentin" />
-              <Typography
-                className="typography-activities"
-                variant="overline"
-                style={{ marginRight: "110px" }}
-              >
-                Aimer faire bronzette
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid xs={4}>
-            <Paper
-              className="paper"
-              elevation="10"
-              style={{ borderRadius: "10px" }}
-            >
-              <Typography variant="p" className="typography-name">
-                Louis Duplantier
-                <Link href="https://github.com/chtoudi" target="_blank">
-                  <GitHubIcon className="icon icon-louis github-icon-louis" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/louis-duplantier-a99778221/"
-                  target="_blank"
-                >
-                  <LinkedInIcon className="icon icon-louis linkedin-icon-louis" />
-                </Link>
-              </Typography>
-              <Typography variant="p" style={{ marginRight: "195px" }}>
-                Développeur
-              </Typography>
-              <Divider className="divider divider-louis" />
-              <Typography
-                className="typography-activities"
-                variant="overline"
-                style={{ marginRight: "95px" }}
-              >
-                Aimer jouer aux cookies
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Box> */}
     </Box>
   );
 };
