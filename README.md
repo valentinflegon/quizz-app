@@ -1,6 +1,6 @@
-#GEOQUIZ
+# GEOQUIZ
 
-##Context
+## Context 
 Le projet est un site de quiz sur les connaissances géographiques où plusieurs quiz seront disponibles. Le but de ces quiz sera d'approximer le nombre d'habitants pour une ville ou un pays donné, ainsi que la distance entre deux villes ou pays.
 Un utilisateur pourra se créer un compte ou non pour jouer. Si le joueur est connecté, il aura accès à ses résultats personnels, et le résultat de ses parties sera enregistré.
 N'importe quel joueur, qu'il soit connecté ou non, pourra jouer à tous les modes de jeu et pourra consulter le classement général des joueurs (enregistrés) par mode de jeu.
@@ -9,7 +9,7 @@ Pour la construction des questions, nous utilisons un fichier pour stocker une l
 Notre base de données nous servira à stocker les informations d’un utilisateur (nom d’utilisateur, mot de passe et score). Les points (score) d’un utilisateur seront calculés en fonction de sa précision à répondre aux questions proposées par notre application.
 L'application back fournira une API REST pour accéder à toutes ces informations.
 
-##Techno
+## Techno
 Pour réaliser cette application web, plusieurs options concernant les choix techniques se présentaient à nous.\\
 Récemment, nous avions développé avec l'équipe une application web (Jira-like) en Angular ce qui nous a amené à nous orienter vers React ou VueJS afin de monter en compétences sur un nouveau framework. De ce fait, nous nous sommes dirigés vers React pour plusieurs raisons. D'un point de vue "Tendance du marché", React est le framework le plus demandé depuis 2015, ce qui nous incite à penser qu'il va prochainement dépasser Angular. D'un point de vue des performances React se situe en tête du classement comparé à Angular et à VueJS. React dispose également d'une très grande communauté de développeurs (plusieurs millions) ce qui peut être utile lorsqu'on rencontre des problèmes.\\
 
@@ -25,7 +25,7 @@ Par la suite, nous allons utiliser Swagger qui est un langage de description d'i
 
 Pour conclure cette partie, nous pouvons annoncer que nous nous sommes dirigés vers une application MERN Stack. MERN Stack est un ensemble de technologies Javascript utilisé pour un déploiement rapide des applications Web. MERN comprend 4 technologies, MongoDB pour la gestion de base de données, le framework Javascript Back-End Express JS, le serveur JavaScript NodeJS et React pour le front. Le Stack MERN est conçu pour rendre le processus de développement fluide et facile.\\
 
-##APIs
+## APIs
 Dans ce projet, nous allons utiliser deux API tierces.
 \subsection{DISTANCE API}
 
