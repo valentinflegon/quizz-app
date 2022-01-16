@@ -63,9 +63,9 @@ DELETE http://localhost:3002/api/user-username/koko
 
 
 ###
-POST https://countriesnow.space/api/v0.1/countries/population/cities
+POST https://countriesnow.space/api/v0.1/countries/population
 content-type: application/json
 
 {
-	"city":"Germany"
+	"country":"Germany"
 }
