@@ -145,12 +145,15 @@ const DistCountries = () => {
             }
           });
         } catch (e) {
+          alert("Vous devez vous inscrire pour enrgistrer vos scores")
           console.log("erreur : ", e);
         }
       }else{
         alert("Vous devez vous inscrire pour enrgistrer vos scores")
+
       }
-    } catch (e) {}
+    } catch (e) {        alert("Vous devez vous inscrire pour enrgistrer vos scores")
+  }
   }
 
   if (currentQuestion == 0) {

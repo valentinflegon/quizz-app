@@ -71,7 +71,7 @@ const MainMenu = () => {
             </NavLink>
           </Grid>
           <Grid item xs={6}>
-            <NavLink exact to="/dist-cities">
+            <NavLink exact to="/pop-cities">
               <Card className='card'>
                 <CardContent>
                   <Typography variant="h5" component="div">
