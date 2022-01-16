@@ -10,10 +10,10 @@ Notre base de données nous servira à stocker les informations d’un utilisate
 L'application back fournira une API REST pour accéder à toutes ces informations.
 
 ## Techno
-*  React \\
-*  MongoDB\\
-*  Nodejs \\
-*  MUI \\
+*  React \
+*  MongoDB\
+*  Nodejs \
+*  MUI \
 
 Pour réaliser cette application web, plusieurs options concernant les choix techniques se présentaient à nous.\\
 Récemment, nous avions développé avec l'équipe une application web (Jira-like) en Angular ce qui nous a amené à nous orienter vers React ou VueJS afin de monter en compétences sur un nouveau framework. De ce fait, nous nous sommes dirigés vers React pour plusieurs raisons. D'un point de vue "Tendance du marché", React est le framework le plus demandé depuis 2015, ce qui nous incite à penser qu'il va prochainement dépasser Angular. D'un point de vue des performances React se situe en tête du classement comparé à Angular et à VueJS. React dispose également d'une très grande communauté de développeurs (plusieurs millions) ce qui peut être utile lorsqu'on rencontre des problèmes.\\
