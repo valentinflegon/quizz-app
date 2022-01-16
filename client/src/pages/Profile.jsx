@@ -21,9 +21,18 @@ const Profile = () => {
   const [listDistCountries, setListDistCountries] = React.useState(
     user.user.scores.distancePays
   );
+  const [listPopCities, setListPopCities] = React.useState(
+    user.user.scores.populationVilles
+  );
+  const [listPopCountries, setListPopCountries] = React.useState(
+    user.user.scores.populationPays
+  );
+  
 
   listDistCities.sort((a, b) => b - a);
   listDistCountries.sort((a, b) => b - a);
+  listPopCities.sort((a, b) => b - a);
+  listPopCountries.sort((a, b) => b - a);
 
   return (
     <>
@@ -86,6 +95,58 @@ const Profile = () => {
             </TableHead>
             <TableBody>
               {listDistCountries.slice(0, 5).map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {/* <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell> */}
+                  <TableCell align="left">{row}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      <div className="Tab">
+        <TableContainer component={Paper}>
+          <Table size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <b>Score population Villes:</b>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {listPopCities.slice(0, 5).map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {/* <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell> */}
+                  <TableCell align="left">{row}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      <div className="Tab">
+        <TableContainer component={Paper}>
+          <Table size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <b>Score population Pays:</b>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {listPopCountries.slice(0, 5).map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
