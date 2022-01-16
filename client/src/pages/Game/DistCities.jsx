@@ -24,7 +24,7 @@ const DistCities = () => {
   const { setUser } = useUserContext();
   let { state } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  let data = require("../../components/cities.json");
+  let data = require("../../data/cities.json");
 
   const [list, setList] = React.useState([]);
   const [listCopy, setListCopy] = React.useState([]);

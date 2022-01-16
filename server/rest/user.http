@@ -60,3 +60,12 @@ DELETE http://localhost:3002/api/user/61e14b21342763fa8af1a614
 
 ### remove a user by username 
 DELETE http://localhost:3002/api/user-username/koko
+
+
+###
+POST https://countriesnow.space/api/v0.1/countries/population/cities
+content-type: application/json
+
+{
+	"city":"Germany"
+}

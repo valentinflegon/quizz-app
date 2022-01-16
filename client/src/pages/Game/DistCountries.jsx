@@ -25,7 +25,7 @@ const DistCountries = () => {
   const { setUser } = useUserContext();
   let { state } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  let data = require("../../components/paysGood.json");
+  let data = require("../../data/paysGood.json");
 
   const [list, setList] = React.useState([]);
   const [listCopy, setListCopy] = React.useState([]);

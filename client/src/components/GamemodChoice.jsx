@@ -6,7 +6,7 @@ import {
 
 const GamemodChoice = () => {
   let { state } = useLocation();
-  const data = require('./paysGood.json');
+  const data = require('../data/paysGood.json');
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
