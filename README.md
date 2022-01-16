@@ -59,3 +59,10 @@ L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous)
     }
     \end{lstlisting}
 
+## Lancer le projet 
+
+### Le back 
+....
+
+### Le front
+....
