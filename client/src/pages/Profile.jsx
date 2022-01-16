@@ -19,6 +19,11 @@ const Profile = () => {
     user.user.scores.distancePays
   );
 
+  listDistCities.sort((a,b) => b - a);
+  listDistCountries.sort((a,b) => b - a);
+
+
+
   return (
     <>
       {" "}
@@ -39,7 +44,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {listDistCities.map((row) => (
+              {listDistCities.slice(0,5).map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -63,7 +68,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {listDistCountries.map((row) => (
+              {listDistCountries.slice(0,5).map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
