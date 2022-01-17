@@ -69,6 +69,8 @@ L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous)
 ### Le back 
 Dans /quizz-app/server:
 
+$ npm init
+
 $ npm 
 
 $ npm run dev
