@@ -65,7 +65,7 @@ L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous)
     \end{lstlisting}
 
 ## Lancer le projet 
-###prérequis
+### Prérequis
 
 node et npm 
 
