@@ -13,7 +13,6 @@ import "../styles/_leaderboard.scss"
 const rows = [];
 
 export default function BasicTable() {
-  console.log("basic table called");
   const [array, setArray] = useState([]);
   try {
     axios.get("http://localhost:3002/api/users/").then((response) => {
@@ -38,25 +37,28 @@ export default function BasicTable() {
   } catch (e) {
     console.log(e);
   }
-  // return array.length > 0 ? (
 
     return (
     <div className="Tab">
       <p><strong>LeaderBoard Distance Villes : </strong></p>
-      <TableContainer component={Paper}>
+      <TableContainer sx={{width: 400}}>
         <Table sx={{}} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left"><b>Username</b></TableCell>
-              <TableCell align="right"><b>Score&nbsp;(pts)</b></TableCell>
+            <TableCell align="center"><b>Classement</b></TableCell>
+              <TableCell align="center"><b>Username</b></TableCell>
+              <TableCell align="center"><b>Score&nbsp;(pts)</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {array.slice(0,10).map((row) => (
+            {array.slice(0,10).map((row,index) => (
               <TableRow
                 key={row.usernamename}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
+                <TableCell component="th" scope="row">
+                  {index+1}
+                </TableCell>
                 <TableCell component="th" scope="row">
                   {row.username}
                 </TableCell>
