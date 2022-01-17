@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import React, { useState, useEffect } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+ } from "@mui/material";
 import axios from "axios";
-import Paper from "@mui/material/Paper";
-
+import { useUsersContext } from "../lib/contextLib";
 import "../styles/_leaderboard.scss"
 
-const rows = [];
-
 export default function BasicTable() {
+  const rows = [];
   const [array, setArray] = useState([]);
+  const onChange = ({ target }) => setArray(target.array);
+  const { setUsers } = useUsersContext();
   try {
-    axios.get("http://localhost:3002/api/users/").then((response) => {
+    axios.get("http://localhost:8080/api/users/").then((response) => {
       const { data } = response;
       if (data.success) {
         data.data.map((userObject) => {
@@ -29,7 +31,7 @@ export default function BasicTable() {
           console.log("rows :",rows);
 
         });
-        setArray(rows);
+        setUsers(data.data);
       } else {
         alert("Error");
       }
@@ -37,12 +39,12 @@ export default function BasicTable() {
   } catch (e) {
     console.log(e);
   }
-
+  useEffect(() => setArray(rows), array);
     return (
     <div className="Tab">
       <p><strong>LeaderBoard Distance Villes : </strong></p>
-      <TableContainer sx={{width: 400}}>
-        <Table sx={{}} aria-label="simple table">
+      <TableContainer onChange={{onChange}} sx={{width: 400}}>
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
             <TableCell align="center"><b>Classement</b></TableCell>

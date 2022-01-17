@@ -1,14 +1,14 @@
 ### get all users API URL
-GET http://localhost:3002/api/users/
+GET http://localhost:8080/api/users/
 
 ### get user by id API URL
-GET http://localhost:3002/api/user/61e010da15e34cc5ec2116ff
+GET http://localhost:8080/api/user/61e010da15e34cc5ec2116ff
 
 ### get user by username API URL
-GET http://localhost:3002/api/user-username/Test
+GET http://localhost:8080/api/user-username/Test
 
 ### add user API URL
-POST http://localhost:3002/api/user/
+POST http://localhost:8080/api/user/
 content-type: application/json
 
 {
@@ -18,7 +18,7 @@ content-type: application/json
 }
 
 ### update user API URL
-PUT http://localhost:3002/api/user/61e14c8596647ac5ef87ca50
+PUT http://localhost:8080/api/user/61e14c8596647ac5ef87ca50
 content-type: application/json
 
 {
@@ -26,7 +26,7 @@ content-type: application/json
 }
 
 ### update user score API URL
-PUT http://localhost:3002/api/add-score/61e1bc1deb75c9216b1c37de
+PUT http://localhost:8080/api/add-score/61e1bc1deb75c9216b1c37de
 content-type: application/json
 
 {
@@ -39,7 +39,7 @@ content-type: application/json
 }
 
 ### compare a user password API URL
-PUT http://localhost:3002/api/user/compare-password/61e2badbfd4e788fe9107a78
+PUT http://localhost:8080/api/user/compare-password/61e2badbfd4e788fe9107a78
 content-type: application/json
 
 {
@@ -47,7 +47,7 @@ content-type: application/json
 }
 
 ### login user
-POST http://localhost:3002/api/login
+POST http://localhost:8080/api/login
 Content-Type: application/json
 
 {
@@ -56,10 +56,10 @@ Content-Type: application/json
 }
 
 ### remove a user by id 
-DELETE http://localhost:3002/api/user/61e14b21342763fa8af1a614
+DELETE http://localhost:8080/api/user/61e14b21342763fa8af1a614
 
 ### remove a user by username 
-DELETE http://localhost:3002/api/user-username/koko
+DELETE http://localhost:8080/api/user-username/koko
 
 
 ###

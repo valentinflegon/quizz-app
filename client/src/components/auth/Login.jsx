@@ -58,7 +58,7 @@ const Login = () => {
       password: data.get('password'),
     };
     try {
-      axios.post('http://localhost:3002/api/login', tmp)
+      axios.post('http://localhost:8080/api/login', tmp)
         .then((response) => {
           const { data } = response;
           if (data.success) {

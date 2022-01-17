@@ -117,7 +117,7 @@ const Settings = () => {
         if (fields.password.length != 0) userPassword.password = fields.password;
         try {
             console.log(">0");
-            axios.put('http://localhost:3002/api/user/compare-password/' + user.user._id, userPassword)
+            axios.put('http://localhost:8080/api/user/compare-password/' + user.user._id, userPassword)
                 .then((response) => {
                     const { data } = response;
                     if (data.success) {
@@ -131,7 +131,7 @@ const Settings = () => {
             setIsLoading(false);
         }
         try {
-            axios.put('http://localhost:3002/api/user/' + user.user._id, userModified)
+            axios.put('http://localhost:8080/api/user/' + user.user._id, userModified)
                 .then((response) => {
                     const { data } = response;
                     if (data.success) {

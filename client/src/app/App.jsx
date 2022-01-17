@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppContext, UserContext } from "../lib/contextLib";
+import { AppContext, UserContext, UsersContext } from "../lib/contextLib";
 import {
   BrowserRouter,
   Routes,
@@ -29,9 +29,11 @@ import {
 const App = () => {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [user, setUser] = useState();
+  const [users, setUsers] = useState();
   return (
     <div className='App gradient__bg'>
       <BrowserRouter>
+      <UsersContext.Provider value={{ users, setUsers }}>
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
           <UserContext.Provider value={{ user, setUser }}>
             <Navbar />
@@ -54,6 +56,7 @@ const App = () => {
             <Footer />
           </UserContext.Provider>
         </AppContext.Provider>
+        </UsersContext.Provider>
       </BrowserRouter>
     </div>
   );
