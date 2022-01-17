@@ -86,7 +86,6 @@ const AboutUs = () => {
       </div>
       <Box
         sx={{
-          display: "grid",
           marginBottom: "30px",
           display: "inline-table",
           gridTemplateColumns: "repeat(3, 1fr)",

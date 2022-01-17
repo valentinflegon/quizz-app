@@ -27,8 +27,6 @@ const Profile = () => {
   const [listPopCountries, setListPopCountries] = React.useState(
     user.user.scores.populationPays
   );
-  
-
   listDistCities.sort((a, b) => b - a);
   listDistCountries.sort((a, b) => b - a);
   listPopCities.sort((a, b) => b - a);
@@ -49,9 +47,7 @@ const Profile = () => {
                 </div>
                 <div className="name">
                 <b>{user.user.username}</b>
-                </div>
-             
-               
+                </div>  
               </TableBody>
             </Table>
           </TableContainer>
@@ -73,9 +69,6 @@ const Profile = () => {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {/* <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell> */}
                   <TableCell align="left">{row}</TableCell>
                 </TableRow>
               ))}
@@ -99,9 +92,6 @@ const Profile = () => {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {/* <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell> */}
                   <TableCell align="left">{row}</TableCell>
                 </TableRow>
               ))}
@@ -125,9 +115,6 @@ const Profile = () => {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {/* <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell> */}
                   <TableCell align="left">{row}</TableCell>
                 </TableRow>
               ))}
@@ -151,9 +138,6 @@ const Profile = () => {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {/* <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell> */}
                   <TableCell align="left">{row}</TableCell>
                 </TableRow>
               ))}

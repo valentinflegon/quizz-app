@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { NavLink, useLocation } from "react-router-dom";
-import QuestionCard from "../../components/QuestionCard";
 import { Card, Button } from "@mui/material";
 import "../../styles/components/_DistCities.scss";
 import TextField from "@mui/material/TextField";
@@ -19,16 +16,14 @@ import { useUserContext } from "../../lib/contextLib";
 
 const NUMBERQUESTION = 10;
 
-const PopCities = () => {
+const PopCountries = () => {
   const user = useUserContext();
-  const { setUser } = useUserContext();
-  let { state } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  let data = require("../../data/popCities.json");
+  let data = require("../../data/popCountries.json");
 
   const [list, setList] = React.useState([]);
   const [listCopy, setListCopy] = React.useState([]);
-  const [cities, setCities] = useState(null);
+  const [countries, setCities] = useState(null);
   const [answer, setAnswer] = React.useState("");
   const [sumScore, setSumScore] = React.useState(0);
 
@@ -40,20 +35,20 @@ const PopCities = () => {
 
   function handleAdd() {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
-    let citie1 = cities[0];
+    let countrie1 = countries[0];
     let population;
     setIsLoading(true);
 
   
-    const _citie = {"city": citie1}
+    const _country = {"country": countrie1}
 
     try {
       axios
-        .post("https://countriesnow.space/api/v0.1/countries/population/cities",
-          _citie
+        .post("https://countriesnow.space/api/v0.1/countries/population",
+          _country
         )
         .then((resp) => {
-          population = resp.data.data.populationCounts[0].value;
+          population = resp.data.data.populationCounts[0].value
           
           console.log(population)
 
@@ -66,7 +61,7 @@ const PopCities = () => {
             population,
             accuracyValue,
             scoreQuestion,
-            citie1,
+            countrie1,
             currentQuestion,
             answer,
           });
@@ -127,7 +122,7 @@ const PopCities = () => {
         const score = 
         {
           "scores": {
-            "populationVilles": sumScore,
+            "populationPays": sumScore,
           }
         }
         try {
@@ -158,7 +153,7 @@ const PopCities = () => {
   if (currentQuestion == 0) {
     return (
       <>
-        <h1>Quiz Population Villes</h1>
+        <h1>Quiz Population Pays</h1>
         <Card className="startCard">
           <div className="button">
             <Button onClick={loadCities} variant="contained">
@@ -172,7 +167,7 @@ const PopCities = () => {
   if (currentQuestion == NUMBERQUESTION + 1) {
     return (
       <>
-        <h1>Quiz Population Villes</h1>
+        <h1>Quiz Population Pays</h1>
         <TableContainer className="tab" component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
@@ -203,7 +198,7 @@ const PopCities = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.citie1}
+                      {row.countrie1}
                     </TableCell>
                     <TableCell align="right">{row.accuracyValue}</TableCell>
                     <TableCell align="right">{row.answer}</TableCell>
@@ -240,13 +235,13 @@ const PopCities = () => {
   else
     return (
       <>
-        <h1>Quiz Distance Villes</h1>
+        <h1>Quiz Distance Pays</h1>
 
         <Card className="questionCard">
           <h2>
             Question {currentQuestion}/10: <br />
             <span>
-              Quelle est la population de {cities[0]}  ?
+              Quelle est la population de {countries[0]}  ?
             </span>
           </h2>
 
@@ -273,4 +268,4 @@ const PopCities = () => {
     );
 };
 
-export default PopCities;
+export default PopCountries;

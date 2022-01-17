@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import {Typography} from '@mui/material';
+import "../styles/components/_footer.scss";
 
 const Footer = () => {
   return (
@@ -18,6 +19,7 @@ const Footer = () => {
           <NavLink  to="/">
             @GEOQUIZZ
           </NavLink>
+
         </div>
       </div>
     </div>

@@ -19,12 +19,13 @@ import {
   Leaderboard,
   Profile,
   Settings,
-} from '../pages';
+} from '../containers';
 import {
   Navbar,
   CountryDist,
   Footer,
 } from '../components';
+import "../styles/_app.scss";
 
 const App = () => {
   const [isAuthenticated, userHasAuthenticated] = useState(false);

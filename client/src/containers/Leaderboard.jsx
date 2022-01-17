@@ -28,8 +28,7 @@ export default function BasicTable() {
           }
           rows.push({ username: userObject.username, score: max });
           rows.sort((a, b) => b.score - a.score);
-          console.log("rows :",rows);
-
+          return rows;
         });
         setUsers(data.data);
       } else {

@@ -3,8 +3,7 @@ import {
   Card, 
   TextField 
   } from '@mui/material';
-import '../styles/components/_questionCard.scss'
-
+  
 function QuestionCard({ currentQuestion, question, inputText, citie1, citie2 }) {
   return (
     <Card className='questionCard'>

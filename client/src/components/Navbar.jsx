@@ -18,8 +18,6 @@ import avatar from "../assets/avatar.png";
 import { useNavigate, NavLink } from "react-router-dom";
 import "../styles/components/_navbar.scss";
 import { useAppContext } from "../lib/contextLib";
-
-// const pages = ["LeaderBoard"];
 const settings = ["Profil", "Réglages", "Se déconnecter"];
 
 const NavBar = () => {

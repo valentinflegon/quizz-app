@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { NavLink, useLocation } from "react-router-dom";
-import QuestionCard from "../../components/QuestionCard";
 import { Card, Button } from "@mui/material";
 import "../../styles/components/_DistCities.scss";
 import TextField from "@mui/material/TextField";
@@ -19,17 +16,14 @@ import { useUserContext } from "../../lib/contextLib";
 
 const NUMBERQUESTION = 10;
 
-const DistCountries = () => {
- 
+const PopCities = () => {
   const user = useUserContext();
-  const { setUser } = useUserContext();
-  let { state } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  let data = require("../../data/paysGood.json");
+  let data = require("../../data/popCities.json");
 
   const [list, setList] = React.useState([]);
   const [listCopy, setListCopy] = React.useState([]);
-  const [countries, setCountries] = useState(null);
+  const [cities, setCities] = useState(null);
   const [answer, setAnswer] = React.useState("");
   const [sumScore, setSumScore] = React.useState(0);
 
@@ -41,37 +35,38 @@ const DistCountries = () => {
 
   function handleAdd() {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
-    let countrie1 = countries[0];
-    let countrie2 = countries[1];
-    let distance;
+    let citie1 = cities[0];
+    let population;
     setIsLoading(true);
+
+  
+    const _citie = {"city": citie1}
+
     try {
       axios
-        .get(
-          "https://fr.distance24.org/route.json?stops=" +
-            countries[0] +
-            "|" +
-            countries[1]
+        .post("https://countriesnow.space/api/v0.1/countries/population/cities",
+          _citie
         )
         .then((resp) => {
-          distance = resp.data.distance;
+          population = resp.data.data.populationCounts[0].value;
+          
+          console.log(population)
 
-          let accuracyValue = accuracy(answer, distance);
+          let accuracyValue = accuracy(answer, population);
           accuracyValue = accuracyValue.toFixed(3);
           let scoreQuestion = scoreFunction(accuracyValue);
           setSumScore(sumScore + scoreQuestion);
 
           const newList = list.concat({
-            distance,
+            population,
             accuracyValue,
             scoreQuestion,
-            countrie1,
-            countrie2,
+            citie1,
             currentQuestion,
             answer,
           });
           setList(newList);
-          loadCountries();
+          loadCities();
           setIsLoading(false);
         });
     } catch (error) {
@@ -83,8 +78,8 @@ const DistCountries = () => {
     return Math.ceil(accuracy);
   }
 
-  function accuracy(answer, distance) {
-    let realAnswer = distance;
+  function accuracy(answer, population) {
+    let realAnswer = population;
     accuracy = 100 - (Math.abs(answer - realAnswer) * 100) / realAnswer;
     if (accuracy < 0) return 0;
     else return accuracy;
@@ -94,7 +89,7 @@ const DistCountries = () => {
     return Math.floor(Math.random() * max);
   }
 
-  function loadCountries() {
+  function loadCities() {
     if (data.length <= 3) {
       // A MODIFIER
       data = data.concat(listCopy);
@@ -102,18 +97,14 @@ const DistCountries = () => {
     }
     const nb = getRandomInt(data.length);
 
-    const countrie1 = data[nb];
-    const c1 = countrie1.toString(2);
+    const citie1 = data[nb];
+    const c1 = citie1.toString(2);
     data.splice(nb, 1);
 
-    const nb2 = getRandomInt(data.length);
-    const countrie2 = data[nb2];
-    const c2 = countrie2.toString(2);
-    data.splice(nb2, 1);
+    
+    const newList = listCopy.concat(c1);
 
-    const newList = listCopy.concat(c1, c2);
-
-    setCountries([countrie1, countrie2]);
+    setCities([citie1]);
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
     setListCopy(newList);
   }
@@ -131,38 +122,41 @@ const DistCountries = () => {
         const score = 
         {
           "scores": {
-            "distancePays": sumScore,
+            "populationVilles": sumScore,
           }
         }
         try {
           const URL = "http://localhost:8080/api/add-score/" + user.user._id;
           axios.put(URL, score).then((response) => {
             const { data } = response;
-            if (data.success) {
+            if (data.success) {            
               alert("Votre score bien été ajouté ")
+
             } else {
               alert("Error");
             }
           });
         } catch (e) {
           alert("Vous devez vous inscrire pour enrgistrer vos scores")
+
           console.log("erreur : ", e);
         }
       }else{
-        alert("Vous devez vous inscrire pour enrgistrer vos scores")
 
       }
-    } catch (e) {        alert("Vous devez vous inscrire pour enrgistrer vos scores")
-  }
+    } catch (e) {
+      alert("Vous devez vous inscrire pour enrgistrer vos scores")
+
+    }
   }
 
   if (currentQuestion == 0) {
     return (
       <>
-        <h1>Quiz Distance Pays</h1>
+        <h1>Quiz Population Villes</h1>
         <Card className="startCard">
           <div className="button">
-            <Button onClick={loadCountries} variant="contained">
+            <Button onClick={loadCities} variant="contained">
               Commencer
             </Button>
           </div>
@@ -173,7 +167,7 @@ const DistCountries = () => {
   if (currentQuestion == NUMBERQUESTION + 1) {
     return (
       <>
-        <h1>Quiz Distance Pays</h1>
+        <h1>Quiz Population Villes</h1>
         <TableContainer className="tab" component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
@@ -185,10 +179,10 @@ const DistCountries = () => {
                   <b>Précision(%)</b>
                 </TableCell>
                 <TableCell align="right">
-                  <b>Votre réponse(KM)</b>
+                  <b>Votre réponse</b>
                 </TableCell>
                 <TableCell align="right">
-                  <b>Correction(KM)</b>
+                  <b>Correction</b>
                 </TableCell>
                 <TableCell align="right">
                   <b>Score</b>
@@ -204,11 +198,11 @@ const DistCountries = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.countrie1} / {row.countrie2}
+                      {row.citie1}
                     </TableCell>
                     <TableCell align="right">{row.accuracyValue}</TableCell>
                     <TableCell align="right">{row.answer}</TableCell>
-                    <TableCell align="right">{row.distance}</TableCell>
+                    <TableCell align="right">{row.population}</TableCell>
                     <TableCell align="right">{row.scoreQuestion}</TableCell>
                   </TableRow>
                 </>
@@ -225,33 +219,35 @@ const DistCountries = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <div className="saveScore"><Button  onClick={(sendScore)} variant="contained">
+        
+          <div className="saveScore"><Button  onClick={(sendScore)} variant="contained">
             Enregistrer le score
           </Button></div>
-        <div><Button onClick={(loadCountries, newGame)} variant="contained">
+        <div><Button onClick={(loadCities, newGame)} variant="contained">
             Recommencer
           </Button></div>
+  
+        
+         
       </>
     );
   }
-  //ajouter a un tableau le numero de la question, le nom des villes
-  //la distance de l'input et la bonne réponse
   else
     return (
       <>
-        <h1>Quiz Distance Pays</h1>
+        <h1>Quiz Distance Villes</h1>
 
         <Card className="questionCard">
           <h2>
             Question {currentQuestion}/10: <br />
             <span>
-              Quelle est la distance entre {countries[0]} et {countries[1]} ?
+              Quelle est la population de {cities[0]}  ?
             </span>
           </h2>
 
           <TextField
             type="number"
-            label="Distance en KM"
+            label="Population"
             variant="outlined"
             onChange={handleChange}
             value={answer}
@@ -267,15 +263,9 @@ const DistCountries = () => {
               Next
             </LoaderButton>
           </div>
-          {/* <div className="button">
-            <Button onClick={handleAdd} variant="contained">
-              Next
-            </Button>
-          </div> */}
         </Card>
       </>
     );
 };
 
-
-export default DistCountries;
+export default PopCities;

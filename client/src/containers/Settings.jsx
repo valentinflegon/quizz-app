@@ -114,7 +114,7 @@ const Settings = () => {
 
         if (fields.username.length > 0) userModified.username = fields.username;
         if (fields.email.length > 0) userModified.email = fields.email;
-        if (fields.password.length != 0) userPassword.password = fields.password;
+        if (fields.password.length !== 0) userPassword.password = fields.password;
         try {
             console.log(">0");
             axios.put('http://localhost:8080/api/user/compare-password/' + user.user._id, userPassword)
