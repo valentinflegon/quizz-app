@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  api-server:
+    image: quizz-app/backend
+    stdin_open: true
+    ports:
+      - "8080:8080"
+    networks: 
+      - quizz-app
+  react-app:
+    image: quizz-app/client
+    ports:
+      - "3000:3000"
+    networks: 
+      - quizz-app
+
+networks:
+  quizz-app:
+    driver: bridge
+
+
