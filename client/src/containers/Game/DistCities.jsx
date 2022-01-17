@@ -145,7 +145,7 @@ const DistCities = () => {
             }
           });
         } catch (e) {
-          alert("Vous devez vous inscrire pour enrgistrer vos scores")
+          alert("Vous devez vous inscrire pour enregistrer vos scores")
 
           console.log("erreur : ", e);
         }
@@ -153,7 +153,7 @@ const DistCities = () => {
 
       }
     } catch (e) {
-      alert("Vous devez vous inscrire pour enrgistrer vos scores")
+      alert("Vous devez vous inscrire pour enregistrer vos scores")
 
     }
   }

@@ -36,6 +36,7 @@ const PopCountries = () => {
   function handleAdd() {
     setCurrentQuestion([parseInt(currentQuestion) + 1]);
     let countrie1 = countries[0];
+    console.log(countries);
     let population;
     setIsLoading(true);
 
@@ -48,10 +49,8 @@ const PopCountries = () => {
           _country
         )
         .then((resp) => {
-          population = resp.data.data.populationCounts[0].value
-          
-          console.log(population)
-
+          population = resp.data.data.populationCounts[resp.data.data.populationCounts.length-1].value
+          console.log(population);
           let accuracyValue = accuracy(answer, population);
           accuracyValue = accuracyValue.toFixed(3);
           let scoreQuestion = scoreFunction(accuracyValue);
@@ -137,16 +136,14 @@ const PopCountries = () => {
             }
           });
         } catch (e) {
-          alert("Vous devez vous inscrire pour enrgistrer vos scores")
-
+          alert("Vous devez vous inscrire pour enregistrer vos scores")
           console.log("erreur : ", e);
         }
       }else{
 
       }
     } catch (e) {
-      alert("Vous devez vous inscrire pour enrgistrer vos scores")
-
+      alert("Vous devez vous inscrire pour enregistrer vos scores")
     }
   }
 

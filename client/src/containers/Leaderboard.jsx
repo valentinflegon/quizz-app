@@ -70,8 +70,7 @@ export default function BasicTable() {
           }
           rowsPopCities.push({ username: userObject.username, score: maxPopCities });
           rowsPopCities.sort((a, b) => b.score - a.score);
-
-          
+          return true;
         });
         setUsers(data.data);
       } else {

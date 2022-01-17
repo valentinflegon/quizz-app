@@ -9,7 +9,6 @@ import {
   Home,
   LogIn,
   SignIn,
-  Play,
   NotFound,
   AboutUs,
   PopCities,
@@ -22,7 +21,6 @@ import {
 } from '../containers';
 import {
   Navbar,
-  CountryDist,
   Footer,
 } from '../components';
 import "../styles/_app.scss";
@@ -42,10 +40,8 @@ const App = () => {
               <Route  path="/" element={<Home />} />
               <Route  path="/login" element={<LogIn />} />
               <Route  path="/signin" element={<SignIn />} />
-              <Route  path="/play" element={<Play />} />
               <Route  path="/profile" element={<Profile />} />
               <Route  path="/settings" element={<Settings />} />
-              <Route  path="/countryDistances" element={<CountryDist />} />
               <Route  path="/leaderboard" element={<Leaderboard />} />
               <Route  path="/about-us" element={<AboutUs />} />
               <Route  path="/dist-cities" element={<DistCities />} />

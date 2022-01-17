@@ -145,14 +145,14 @@ const DistCountries = () => {
             }
           });
         } catch (e) {
-          alert("Vous devez vous inscrire pour enrgistrer vos scores")
+          alert("Vous devez vous inscrire pour enregistrer vos scores")
           console.log("erreur : ", e);
         }
       }else{
-        alert("Vous devez vous inscrire pour enrgistrer vos scores")
+        alert("Vous devez vous inscrire pour enregistrer vos scores")
 
       }
-    } catch (e) {        alert("Vous devez vous inscrire pour enrgistrer vos scores")
+    } catch (e) {        alert("Vous devez vous inscrire pour enregistrer vos scores")
   }
   }
 

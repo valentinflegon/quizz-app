@@ -137,7 +137,7 @@ const PopCities = () => {
             }
           });
         } catch (e) {
-          alert("Vous devez vous inscrire pour enrgistrer vos scores")
+          alert("Vous devez vous inscrire pour enregistrer vos scores")
 
           console.log("erreur : ", e);
         }
@@ -145,7 +145,7 @@ const PopCities = () => {
 
       }
     } catch (e) {
-      alert("Vous devez vous inscrire pour enrgistrer vos scores")
+      alert("Vous devez vous inscrire pour enregistrer vos scores")
 
     }
   }
