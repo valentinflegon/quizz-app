@@ -30,16 +30,16 @@ const GamemodChoice = () => {
       {state && <h1>wallah le game mod choice a bien capté que c'etait {state.username} le boss !</h1>}
       <div className='row mt-3 form-card'>
         <h5>Jouer au mode Distance</h5>
-        <div className='col'><NavLink exact to="/play" state={{ mode: "Distance entre pays" }}>Distance entre pays</NavLink></div>
-        <div className='col'><NavLink exact to="/play" state={{ mode: "Distance entre villes" }}>Distance entre villes</NavLink></div>
+        <div className='col'><NavLink  to="/play" state={{ mode: "Distance entre pays" }}>Distance entre pays</NavLink></div>
+        <div className='col'><NavLink  to="/play" state={{ mode: "Distance entre villes" }}>Distance entre villes</NavLink></div>
       </div>
       <div className='row mt-3 form-card'>
         <h5>Jouer au mode Population</h5>
-        <div className='col'><NavLink exact to="/play" state={{ mode: "Population de pays" }}>Population de pays</NavLink></div>
-        <div className='col'><NavLink exact to="/play" state={{ mode: "Population de villes" }}>Population de villes</NavLink></div>
+        <div className='col'><NavLink  to="/play" state={{ mode: "Population de pays" }}>Population de pays</NavLink></div>
+        <div className='col'><NavLink  to="/play" state={{ mode: "Population de villes" }}>Population de villes</NavLink></div>
       </div>
       {countries &&
-        <NavLink exact to="/countryDistances" state={{ from: [countries[0], countries[1]] }}>jouer au mode distance country</NavLink>
+        <NavLink  to="/countryDistances" state={{ from: [countries[0], countries[1]] }}>jouer au mode distance country</NavLink>
       }
       <button onClick={loadCountries}> changer de pays</button>
       {countries && <div>Trouvez la distance entre {countries[0]} et {countries[1]}</div>}

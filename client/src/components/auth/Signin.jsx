@@ -20,7 +20,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <NavLink exact to="/">
+      <NavLink  to="/">
         Geo-Quizz
       </NavLink>
       {' '}
@@ -149,7 +149,7 @@ const Signin = () => {
               S'inscrire
             </Button>
             <Grid container justifyContent="center">
-              <NavLink exact to="/login">
+              <NavLink  to="/login">
                 Vous avez déjà un compte? S'enregistrer
               </NavLink>
             </Grid>
