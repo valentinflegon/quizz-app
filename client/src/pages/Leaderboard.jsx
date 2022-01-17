@@ -13,7 +13,7 @@ import "../styles/_leaderboard.scss"
 const rows = [];
 
 export default function BasicTable() {
-  const [array, setArray] = useState([]);
+  const [array, setArray] = React.useState([]);
   try {
     axios.get("http://localhost:3002/api/users/").then((response) => {
       const { data } = response;
@@ -26,8 +26,6 @@ export default function BasicTable() {
           }
           rows.push({ username: userObject.username, score: max });
           rows.sort((a, b) => b.score - a.score);
-          console.log("rows :",rows);
-
         });
         setArray(rows);
       } else {
