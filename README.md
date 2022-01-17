@@ -65,6 +65,9 @@ L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous)
     \end{lstlisting}
 
 ## Lancer le projet 
+###prérequis
+
+node et npm 
 
 ### Le back 
 Dans /quizz-app/server:
