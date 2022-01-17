@@ -67,7 +67,8 @@ L'API countriesnow.space permet via des méthodes POST (détaillées ci-dessous)
 ## Lancer le projet 
 
 ### Le back 
-....
+
 
 ### Le front
-....
+- yarn 
+- yarn run start
