@@ -138,7 +138,7 @@ const LeaderBoard = () => {
 
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     const result = await axios.get('http://localhost:3002/api/users/');
+  //     const result = await axios.get('http://localhost:8080/api/users/');
   //     setData(result.data.data)
   //   };
   //   fetchData();

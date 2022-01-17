@@ -1,6 +1,5 @@
 import React from 'react';
 import { MainMenu } from '../components/';
-
 const Home = () => {
   return (
     <div className='home'>

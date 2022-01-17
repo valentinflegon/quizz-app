@@ -6,7 +6,7 @@ const userRouter = require('./routes/user-router');
 const routes = require('./routes/index');
 connectDb();
 
-const PORT = 3002;
+const PORT = 8080;
 
 const app = express();
 const swaggerJsDoc = require('swagger-jsdoc');
@@ -21,7 +21,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:3002",
+                url: "http://localhost:8080",
             },
         ],
     },

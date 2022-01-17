@@ -23,7 +23,7 @@ const Signin = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(validationSchema) });
   let message = {};
   const onSubmit = async (data) => {
-    axios.post('http://localhost:3002/api/create-user', data)
+    axios.post('http://localhost:8080/api/create-user', data)
       .then((response) => {
         console.log(response);
         message = response.data.message;

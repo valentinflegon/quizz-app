@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <div>
       <h1>Page not Found</h1>
-      <NavLink exact to="/">retour acceuil</NavLink>
+      <NavLink  to="/">retour acceuil</NavLink>
     </div>
   );
 };

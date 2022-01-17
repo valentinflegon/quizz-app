@@ -23,7 +23,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <NavLink exact to="/">
+      <NavLink  to="/">
         Geo-Quizz
       </NavLink>
       {' '}
@@ -58,7 +58,7 @@ const Login = () => {
       password: data.get('password'),
     };
     try {
-      axios.post('http://localhost:3002/api/login', tmp)
+      axios.post('http://localhost:8080/api/login', tmp)
         .then((response) => {
           const { data } = response;
           if (data.success) {
@@ -140,7 +140,7 @@ const Login = () => {
             <Grid container alignItems="center"
               justifyContent="center">
               <Grid item>
-                <NavLink exact to="/signin">
+                <NavLink  to="/signin">
                   Vous n'avez pas de compte ? S'inscrire
                 </NavLink>
               </Grid>

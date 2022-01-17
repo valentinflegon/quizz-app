@@ -135,7 +135,7 @@ const DistCountries = () => {
           }
         }
         try {
-          const URL = "http://localhost:3002/api/add-score/" + user.user._id;
+          const URL = "http://localhost:8080/api/add-score/" + user.user._id;
           axios.put(URL, score).then((response) => {
             const { data } = response;
             if (data.success) {

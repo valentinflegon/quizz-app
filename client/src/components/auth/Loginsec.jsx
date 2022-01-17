@@ -17,7 +17,7 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async (formData) => {
-    axios.post('http://localhost:3002/api/login', formData)
+    axios.post('http://localhost:8080/api/login', formData)
       .then((response) => {
         const { data } = response;
         setConnexionData(data);

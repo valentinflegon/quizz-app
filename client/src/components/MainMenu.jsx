@@ -33,7 +33,7 @@ const MainMenu = () => {
       <div className='row'  >
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <NavLink exact to="/dist-countries">
+            <NavLink  to="/dist-countries">
               <Card className='card' >
                 <CardContent>
                   <Typography variant="h5" component="div">
@@ -44,7 +44,7 @@ const MainMenu = () => {
             </NavLink>
           </Grid>
           <Grid item xs={6}>
-            <NavLink exact to="/dist-cities">
+            <NavLink  to="/dist-cities">
               <Card className='card'>
                 <CardContent>
                   <Typography variant="h5" component="div">
@@ -60,7 +60,7 @@ const MainMenu = () => {
       <div className='row'  >
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <NavLink exact to="/pop-countries">
+            <NavLink  to="/pop-countries">
               <Card className='card' >
                 <CardContent>
                   <Typography variant="h5" component="div">
@@ -71,7 +71,7 @@ const MainMenu = () => {
             </NavLink>
           </Grid>
           <Grid item xs={6}>
-            <NavLink exact to="/pop-cities">
+            <NavLink  to="/pop-cities">
               <Card className='card'>
                 <CardContent>
                   <Typography variant="h5" component="div">
