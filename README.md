@@ -73,5 +73,6 @@ $ npm run dev
 
 ### Le front
 Dans /quizz-app/client:
-$ yarn 
+$ yarn
+
 $ yarn run start
