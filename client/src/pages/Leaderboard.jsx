@@ -26,9 +26,11 @@ export default function BasicTable() {
               max = userObject.scores.distancePays[i];
           }
           rows.push({ username: userObject.username, score: max });
+          rows.sort((a, b) => b.score - a.score);
+          console.log("rows :",rows);
+
         });
         setArray(rows);
-        console.log(rows);
       } else {
         alert("Error");
       }
@@ -40,16 +42,17 @@ export default function BasicTable() {
 
     return (
     <div className="Tab">
+      <p><strong>LeaderBoard Distance Villes : </strong></p>
       <TableContainer component={Paper}>
         <Table sx={{}} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Username</TableCell>
-              <TableCell align="right">Score&nbsp;(pts)</TableCell>
+              <TableCell align="left"><b>Username</b></TableCell>
+              <TableCell align="right"><b>Score&nbsp;(pts)</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {array.map((row) => (
+            {array.slice(0,10).map((row) => (
               <TableRow
                 key={row.usernamename}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -64,19 +67,5 @@ export default function BasicTable() {
         </Table>
       </TableContainer>
     </div>);
-  // ) : (
-  //   <div className="Tab">
-  //     <TableContainer>
-  //       <Table sx={{}} aria-label="simple table">
-  //         <TableHead>
-  //           <TableRow>
-  //             <TableCell align="left">Username</TableCell>
-  //             <TableCell align="right">Score&nbsp;(pts)</TableCell>
-  //           </TableRow>
-  //         </TableHead>
-  //         <TableBody></TableBody>
-  //       </Table>
-  //     </TableContainer>
-  //   </div>
-  // );
+
 }
