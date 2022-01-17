@@ -18,6 +18,7 @@ import LoaderButton from "../../components/LoaderButton";
 import { useUserContext } from "../../lib/contextLib";
 
 const NUMBERQUESTION = 10;
+const proxy_url = 'https://young-escarpment-05667.herokuapp.com/';
 
 const DistCities = () => {
   const user = useUserContext();
@@ -45,6 +46,7 @@ const DistCities = () => {
     try {
       axios
         .get(
+          proxy_url +
           "https://fr.distance24.org/route.json?stops=" +
             cities[0] +
             "|" +
