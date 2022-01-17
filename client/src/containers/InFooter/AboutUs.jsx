@@ -104,10 +104,10 @@ const AboutUs = () => {
               <LinkedInIcon className="icon icon-kirsan linkedin-icon-kirsan" />
             </Link>
           </Typography>
-          <Typography style={{}}>Développeur</Typography>
+          <Typography style={{marginRight:190}}>Développeur</Typography>
           <Divider className="divider divider-kirsan" />
-          <Typography className="typography-activities" variant="overline">
-            Aimer faire la fête
+          <Typography style={{marginRight:155}} className="typography-activities" variant="overline">
+            Aime faire la fête
           </Typography>
         </Item>
         <Item>
@@ -123,10 +123,10 @@ const AboutUs = () => {
               <LinkedInIcon className="icon icon-valentin linkedin-icon-valentin" />
             </Link>
           </Typography>
-          <Typography style={{}}>Développeur</Typography>
+          <Typography style={{marginRight:190}}>Développeur</Typography>
           <Divider className="divider divider-valentin" />
-          <Typography className="typography-activities" variant="overline">
-            Aimer faire bronzette
+          <Typography style={{marginRight:125}} className="typography-activities" variant="overline">
+            Aime faire bronzette
           </Typography>
         </Item>
         <Item>
@@ -142,10 +142,10 @@ const AboutUs = () => {
               <LinkedInIcon className="icon icon-louis linkedin-icon-louis" />
             </Link>
           </Typography>
-          <Typography style={{}}>Développeur</Typography>
+          <Typography style={{marginRight:190}}>Développeur</Typography>
           <Divider className="divider divider-louis" />
-          <Typography className="typography-activities" variant="overline">
-            Aimer jouer aux cookies
+          <Typography style={{marginRight:110}} className="typography-activities" variant="overline">
+            Aime jouer aux cookies
           </Typography>
         </Item>
       </Box>
